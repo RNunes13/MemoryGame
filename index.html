@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <title>Jogo da Memória</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="assets/img/brain.png" />
+        <link href="assets/css/main.css" rel="stylesheet" type="text/css"/>
+        <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+
+        <div class="container">
+
+            <!-- DIV QUE CONTÉM O JOGO DA MEMÓRIA -->
+            <div id="game" class="well-lg hidden">
+
+                <div class="row">
+                    <div class="col-sm-11">
+                        <h1>
+                            <span id="title">Jogo da Memória</span>
+                        </h1>
+                    </div>
+                </div>
+
+                <div class="row">
+                    
+                    <div class="col-md-8">
+                        
+                        <p id="description" class="h4">Concentre-se e use a sua memória para encontrar todos os pares.</p>
+                    </div>
+                    <div class="col-md-4">
+                        <button id="redo" class="btn btn-lg btn-link pull-right hidden"><i class="glyphicon glyphicon-refresh"></i> Refazer</button>
+
+                        <button id="home" class="btn btn-lg btn-link pull-right"><i class="glyphicon glyphicon-home"></i> Tela inicial</button>
+
+                    </div>
+
+                </div>
+
+                <hr />
+
+                <!-- DIV QUE CONTEM AS CARTAS DO JOGO (ADICIONADAS POR JS) -->
+                <div id="view" class="text-center">
+
+                </div>
+
+                <!-- LABELS PARA EXIBIÇÃO DOS CLIQUES DADOS E A PONTUAÇÃO -->
+                <h4>
+                    <strong>Cliques:</strong> <span id="clicks">0</span> | 
+                    <strong>Acertos:</strong> <span id="hits">0</span>/12 | 
+                    <strong>Tempo decorrido:</strong> <span id="elapsedTime">00:00:00</span>
+                </h4>
+            </div>
+
+            <!-- <div class="overlay"></div> -->
+
+            <!-- DIV QUE CONTÉM A TELA DE BEM-VINDO (PRIMEIRA TELA EXIBIDA) -->
+            <div id="options" class="well-lg">
+
+                <div class="row">
+
+                    <div class="">
+                        <button id="btnConfig" type="button" class="btn pull-right" onclick="document.querySelector('#configurations').style.display = 'block';"><i class="glyphicon glyphicon-cog"></i> Configurações</button>
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-sm-11">
+                        <h1>
+                            <span>Bem-vindo ao Jogo da Memória</span>
+                        </h1>
+                        <p class="h4">Escolha o nivel de dificuldade abaixo antes de iniciar o jogo.</p>
+                    </div>
+
+                </div>            
+
+                <hr />
+
+                <div class="row">
+
+                    <div class="col-sm-5">
+                        <select id="level" class="form-control" onchange="fnDisableButton(this)">
+                            <option value="">-- Selecione uma dificuldade</option>
+                            <option value="1">Fácil</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <br />
+                    <div class="col-sm-4">
+                        <button id="startGame" type="button" class="btn btn-success" onclick="fnStartGame()" disabled><i class="glyphicon glyphicon-play"></i> Iniciar</button>
+                    </div>
+
+                </div>
+
+                <br />
+                <br />
+
+                <div id="startingGame" class="row hidden" style="text-align: center;">
+
+                    <h4>O jogo será iniciado em</h4>
+                    <span id="countdown"></span>
+                </div>
+
+            </div>
+
+            <!-- DIV QUE CONTÉM O MODAL DAS CONFIGURAÇÕES -->
+            <div id="configurations" class="modal-config">
+
+                <div class="container col-sm-6 col-sm-offset-3 modal-config-content animate">
+
+                    <div class="row text-center">
+
+                        <div class="col-sm-12">
+                            <span onclick="fnCloseModal()" class="close-modal">&times;</span>
+                
+                            <h2>Configurações</h2>
+                            <hr />
+                        </div>
+
+                    </div>
+
+                    <div class="row text-center">
+                        <div id="alertMessage" class="col-sm-6 col-sm-offset-3 hidden">
+                            <div class="alert alert-success">
+                                <strong>Sucesso!</strong> O fundo das cartas foi alterado...
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h3>Fundo das cartas</h3>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div id="backgroundCards" class="text-center"></div>
+                        </div>
+                    </div>
+
+                    <div class="row text-center">
+                        <div class="col-sm-12">
+                            <button id="btnSave" type="button" class="btn btn-success" disabled onclick="fnSaveBackground()"><i class="glyphicon glyphicon-floppy-disk"></i> Salvar</button>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <script src="assets/js/main.js" type="text/javascript"></script>
+
+    </body>
+</html>
