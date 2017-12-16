@@ -32,10 +32,6 @@ button{
     cursor: pointer;
 }
 
-.figura.bg1{
-    background: url('../img/bg1.png');
-}
-
 .figura.ok{
     cursor: default;
 }
@@ -62,7 +58,7 @@ button{
 
 .modal-config-content {
     background-color: #fefefe;
-    margin: 4% auto 0 auto;
+    margin: 1% auto 0 auto;
     border: 1px solid #888;
     border-radius: 5px;
 }
@@ -88,34 +84,50 @@ button{
     margin: 2%;
 }
 
-.figuraBack {
+
+/* backgrounds */
+.bg {
     width: 128px;
     height: 128px;
     border-radius: 5px;
     display: inline-block;
     overflow: hidden;
     cursor: pointer;
+    margin: 5px;
 }
 
-.bg1 {
-    background: url('../img/bg1.png');
+.bg:not(.checked) img{
+   visibility: hidden;
 }
 
-.bg2 {
-    background: url('../img/bg2.png');
+.bg-1:not(.ok) {
+    background: url('../img/fundos/1.png');
 }
-.bg3 {
-    background: url('../img/bg3.png');
+.bg-2:not(.ok) {
+    background: url('../img/fundos/2.png');
+}
+.bg-3:not(.ok) {
+    background: url('../img/fundos/3.png');
+}
+.bg-4:not(.ok) {
+    background: url('../img/fundos/4.png');
+}
+.bg-5:not(.ok) {
+    background: url('../img/fundos/5.png');
+}
+.bg-6:not(.ok) {
+    background: url('../img/fundos/6.png');
+}
+.bg-7:not(.ok) {
+    background: url('../img/fundos/7.png');
+}
+.bg-8:not(.ok) {
+    background: url('../img/fundos/8.png');
+}
+.bg-9:not(.ok) {
+    background: url('../img/fundos/9.png');
 }
 
-.bg1-check {
-    background: url('../img/bg1-check.png');
-}
-
-.bg2-check {
-    background: url('../img/bg2-check.png');
-}
-
-.bg3-check {
-    background: url('../img/bg3-check.png');
+#countdown{
+  font-size: 150px;
 }
