@@ -87,8 +87,8 @@ button{
 
 /* backgrounds */
 .bg {
-    width: 128px;
-    height: 128px;
+    width: 100px;
+    height: 100px;
     border-radius: 5px;
     display: inline-block;
     overflow: hidden;
@@ -102,30 +102,39 @@ button{
 
 .bg-1:not(.ok) {
     background: url('../img/fundos/1.png');
+    background-size: cover;
 }
 .bg-2:not(.ok) {
     background: url('../img/fundos/2.png');
+    background-size: cover;
 }
 .bg-3:not(.ok) {
     background: url('../img/fundos/3.png');
+    background-size: cover;
 }
 .bg-4:not(.ok) {
     background: url('../img/fundos/4.png');
+    background-size: cover;
 }
 .bg-5:not(.ok) {
     background: url('../img/fundos/5.png');
+    background-size: cover;
 }
 .bg-6:not(.ok) {
     background: url('../img/fundos/6.png');
+    background-size: cover;
 }
 .bg-7:not(.ok) {
     background: url('../img/fundos/7.png');
+    background-size: cover;
 }
 .bg-8:not(.ok) {
     background: url('../img/fundos/8.png');
+    background-size: cover;
 }
 .bg-9:not(.ok) {
     background: url('../img/fundos/9.png');
+    background-size: cover;
 }
 
 #countdown{
