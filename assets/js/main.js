@@ -174,13 +174,21 @@
 
     };
 
-    function fnDisableButton(e){
+    function fnDisableButton(){
 
-        if (e.value == "") {
-            document.getElementById('startGame').disabled = true;
+        let userName = document.querySelector("#userName").text;
+        let level = document.querySelector("#level").value;
+        let startGame = document.getElementById('startGame');
+
+        if (userName == "" || level == "") {
+            startGame.disabled = true;
+            startGame.classList.remove('btn-success');
+            startGame.classList.add('btn-danger');
         }
         else {
-            document.getElementById('startGame').disabled = false;
+            startGame.disabled = false;
+            startGame.classList.remove('btn-danger');
+            startGame.classList.add('btn-success');
         }
 
     }

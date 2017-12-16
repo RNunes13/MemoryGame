@@ -88,21 +88,34 @@
                 <hr />
 
                 <div class="row">
+                    <div class="col-sm-6">
+                        
+                        <div class="form-group">
+                            <div class="input-group">
+                                <label class="input-group-addon"><i class="glyphicon glyphicon-user"></i></label>
+                                <input id="userName" class="form-control" type="text" name="Usuario" placeholder="Digite seu nome" title="Usuário" required="" Onkeyup="fnDisableButton()">
+                            </div>
+                        </div>
 
-                    <div class="col-sm-5">
-                        <select id="level" class="form-control" onchange="fnDisableButton(this)">
-                            <option value="">-- Selecione uma dificuldade</option>
-                            <option value="facil">Fácil</option>
-                            <option value="medio">Médio</option>
-                            <option value="dificil">Difícil</option>
-                        </select>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <label class="input-group-addon"><i class="glyphicon glyphicon-stats"></i></label>
+                                <select id="level" class="form-control" onchange="fnDisableButton()">
+                                    <option value="" disabled selected>-- Selecione uma dificuldade</option>
+                                    <option value="facil">Fácil</option>
+                                    <option value="medio">Médio</option>
+                                    <option value="dificil">Difícil</option>
+                                </select>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
 
                 <div class="row">
                     <br />
                     <div class="col-sm-4">
-                        <button id="startGame" type="button" class="btn btn-success" onclick="fnStartGame()" disabled><i class="glyphicon glyphicon-play"></i> Iniciar</button>
+                        <button id="startGame" type="button" class="btn btn-danger" onclick="fnStartGame()" disabled><i class="glyphicon glyphicon-play"></i> Iniciar</button>
                     </div>
 
                 </div>
