@@ -1,11 +1,12 @@
-    
-    console.clear();
+
     var eView = document.querySelector("#view");
     var eDivBackCards = document.querySelector("#backgroundCards");
+    var nBack = 1;
     var nCount;
     var nElapsedTime;
 	var aCards = new Array();
 	var nPairs = 12;
+    var sDifficult = "";
 
 	for(let i=1; i <= nPairs ; i++){
     	aCards.push(i+"-a");
@@ -32,8 +33,7 @@
     var nSeconds = 0;
     var nMinutes = 0;
     var nHours = 0;
-    var sBackground = "bg1";
-    
+
     fnBackgroundCards();
 
     eHome.addEventListener("click", function () {
@@ -49,9 +49,9 @@
 		audio = new Audio(src);
 		audio.play();
 	}
-	 
+
     function fnCheckView() {
-        
+
         if(eView.firstChild) {
             while (eView.firstChild) {
                 eView.removeChild(eView.firstChild);
@@ -88,9 +88,9 @@
             eDiv = document.createElement("div");
             eImg = document.createElement("img");
 
-            eDiv.classList.add("figura", sBackground);
+            eDiv.classList.add("figura","bg-"+nBack);
             eDiv.setAttribute("data-value",parseInt(v));
-            eImg.src = "assets/img/animais/"+v+".png";
+            eImg.src = "assets/img/animais/"+sDifficult+"/"+v+".png";
 
             eDiv.appendChild(eImg);
             eDiv.addEventListener("click",fnClick);
@@ -114,8 +114,6 @@
 
             fnPlay('assets/audio/pegar.mp3');
 
-            eThis.classList.remove(sBackground);
-
             if(eTemp){
 
 				eThis.classList.add("ok");
@@ -135,9 +133,9 @@
 
 					if (nCardA != nCardB) {
 						eThis.classList.remove("bg-danger","ok");
-						eThis.classList.add(sBackground);
+						eThis.classList.add("bg-"+nBack);
 						eTemp.classList.remove("bg-danger","ok");
-						eTemp.classList.add(sBackground);
+						eTemp.classList.add("bg-"+nBack);
 					} else {
 						eThis.classList.remove("bg-success");
 						eTemp.classList.remove("bg-success");
@@ -152,7 +150,6 @@
                     let nTotal = aCards.length;
 
                     if (nHits == nTotal) {
-                        // eHome.classList.remove("hidden");
                         eRedo.classList.remove("hidden");
                         eTitle.innerText = "Parabéns !";
                         eDescription.innerText = "Você encontrou todos os pares.";
@@ -189,8 +186,11 @@
 
     function fnStartGame(){
 
-        document.querySelector("#startingGame").classList.remove("hidden");
-        eCountdown.style.fontSize = '150px';
+		let eStarting =  document.querySelector("#startingGame");
+
+        sDifficult = document.querySelector("#level").value;
+
+        eStarting.classList.remove("hidden");
 
         fnCountdown();
         fnSuffle();
@@ -198,6 +198,8 @@
     }
 
     function fnCountdown() {
+
+		nCount = setTimeout(function() { fnCountdown() }, 1000);
 
         if(nCountdown > 0) {
             eCountdown.innerText = nCountdown;
@@ -211,28 +213,31 @@
             fnElapsedTime();
         }
 
-        nCount = setTimeout(function() { fnCountdown() }, 1000);
-
     }
 
     function fnElapsedTime() {
 
-        var time = ("00" + nHours).slice(-2) + ":" + 
-                   ("00" + nMinutes).slice(-2) + ":" + 
+        var time = ("00" + nHours).slice(-2) + ":" +
+                   ("00" + nMinutes).slice(-2) + ":" +
                    ("00" + nSeconds).slice(-2);
 
         eTimeElapsed.innerText = time;
 
         nSeconds++;
 
+		nHours = (nMinutes + 60) % 60;
+        nMinutes = Math.floor( nSeconds / 60);
+		nSeconds = (nSeconds + 60) % 60;
+
+		/*
         if (nSeconds == 60) {
-            
+
             nSeconds = 0;
 
             if (nMinutes == 59) {
-            
+
                 nHours++;
-                nMinutes = 0   
+                nMinutes = 0
 
             }
             else {
@@ -240,6 +245,7 @@
             }
 
         }
+        */
 
         nElapsedTime = setTimeout(function(){ fnElapsedTime() }, 1000);
 
@@ -248,68 +254,56 @@
     //FUNÇÃO PARA ADICIONAR AS CARTAS DE FUNDO NAS CONFIGURAÇÕES
     function fnBackgroundCards() {
 
-        for (var i = 1; i <= 3; i++) {
+        for (var i = 1; i <= 9; i++) {
 
-            eImgBackCards = document.createElement("img");
+			eImg = document.createElement("img");
+			eImg.src = "assets/img/checked.png";
 
-            eImgBackCards.setAttribute("data-value", i);
+            eDiv = document.createElement("div");
+            eDiv.setAttribute("data-value", i);
+            eDiv.classList.add("bg", "bg-" + i);
+            eDiv.addEventListener('click', fnChooseBackgroudCards)
 
             if (i == 1) {
-                eImgBackCards.classList.add("figuraBack", "bg1-check");
-                eImgBackCards.setAttribute("id", "checked");
-            }
-            else {
-                eImgBackCards.classList.add("figuraBack", "bg" + i);
+                eDiv.classList.add("checked");
             }
 
-            eImgBackCards.style.margin = '10px';
-            eImgBackCards.style.cursor = 'pointer';
-            eImgBackCards.addEventListener('click', fnChooseBackgroudCards)
+            eDiv.appendChild(eImg);
 
-            eDivBackCards.appendChild(eImgBackCards);
+	        eDivBackCards.appendChild(eDiv);
 
         }
 
     }
-    
+
     function fnSaveBackground() {
 
         let eAlertMessage = document.querySelector("#alertMessage");
-        let eImgChecked = document.querySelector("#checked");
+        let eChecked = document.querySelector(".checked");
+		let eBack = document.querySelector(".checked");
+	    let eBtnSave = document.querySelector("#btnSave");
+	    let eAlert = document.querySelector("#alertMessage");
 
-        sBackground = "bg" + eImgChecked.getAttribute("data-value");
-        eAlertMessage.classList.remove("hidden");
-        document.querySelector("#btnSave").disabled = true;
+        eBtnSave.disabled = true;
+		nBack = eBack.getAttribute("data-value");
+		eAlert.classList.remove("hidden");
 
     }
-
-    //AUX QUE ARMAZENARÁ O VALOR DA IMAGEM ANTERIOR - FUNÇÃO ABAIXO
-    var aux = 1;
 
     function fnChooseBackgroudCards() {
 
-        var eCheckImages = document.querySelector("#checked");
-        var nThisDataValue = this.getAttribute("data-value");
+        let eChecked = document.querySelector(".checked");
+        let nThis = this.getAttribute("data-value");
+        let eBtnSave = document.querySelector("#btnSave");
+        let eAlert = document.querySelector("#alertMessage");
 
-        if (eCheckImages) {
-            eCheckImages.removeAttribute("id");
-            eCheckImages.className = "";
-            eCheckImages.classList.add("figuraBack", "bg" + aux)
-
-            this.setAttribute("id", "checked");
-            this.classList.add("bg" + nThisDataValue + "-check");
-
-        }
-        else {
-            this.setAttribute("id", "checked");
-            this.classList.add("bg" + nThisDataValue + "-check");
-        }
-
-        document.querySelector("#btnSave").disabled = false;
-        aux = nThisDataValue;
+		eChecked.classList.remove("checked");
+		this.classList.add("checked");
+        eAlert.classList.add("hidden");
+        eBtnSave.disabled = false;
 
     }
-    
+
     function fnCloseModal() {
 
         let eAlertMessage = document.querySelector("#alertMessage");
