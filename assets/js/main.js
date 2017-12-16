@@ -195,9 +195,8 @@
                        'Acesse as <strong>Configurções</strong> e escolha o seu tema preferido.';
 
             alertify.alert(title, text);
-            return false;
-
-        }      
+            return;
+        }
 
 		let eStarting =  document.querySelector("#startingGame");
 
@@ -210,15 +209,14 @@
     }
 
     function fnCountdown() {
-		
+
         nCount = setTimeout(function() { fnCountdown() }, 1000);
-
-
+        
         if(nCountdown > 0) {
             eCountdown.innerText = nCountdown;
             nCountdown--;
         }
-
+        
         if (nCount == 4) {
             eOptions.classList.add("hidden");
             eGame.classList.remove("hidden");
@@ -275,6 +273,9 @@
             eDiv = document.createElement("div");
             eDiv.setAttribute("data-value", i);
             eDiv.classList.add("bg", "bg-" + i);
+
+            if (i == localStorage.getItem('background')) { eDiv.classList.add("checked") }
+
             eDiv.addEventListener('click', fnChooseBackgroudCards)
 
             /*if (i == 1) {
