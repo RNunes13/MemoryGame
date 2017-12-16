@@ -140,3 +140,12 @@ button{
 #countdown{
   font-size: 150px;
 }
+
+
+@media (max-width: 362px) { 
+
+    .modal-config {
+        overflow-y: scroll;
+    }
+
+}

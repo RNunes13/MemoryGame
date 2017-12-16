@@ -1,7 +1,6 @@
 
     var eView = document.querySelector("#view");
     var eDivBackCards = document.querySelector("#backgroundCards");
-    var nBack = 1;
     var nCount;
     var nElapsedTime;
 	var aCards = new Array();
@@ -81,6 +80,7 @@
     //FUNÇÃO PARA EMBARALHAR AS CARTAS
     function fnSuffle() {
 
+        let nBack = localStorage.getItem("background");
         aCards.sort(function(a,b){ return Math.random() - Math.random() });
 
         aCards.forEach(function(v){
@@ -102,6 +102,7 @@
 
     function fnClick () {
 
+        let nBack = localStorage.getItem("background");
 		let eThis = this;
 		let bOpen = eThis.classList.contains("ok");
 
@@ -183,8 +184,20 @@
         }
 
     }
-
+    
     function fnStartGame(){
+
+        if (localStorage.getItem("background") == null) {
+
+            let title = 'OPSS...';
+            let text = 'Parece que é a primeira vez que você executa este jogo, ou os dados foram limpos.<br/><br/>' +
+                       'Portanto, será necessário configurar o fundo das cartas.<br/><br/>' +
+                       'Acesse as <strong>Configurções</strong> e escolha o seu tema preferido.';
+
+            alertify.alert(title, text);
+            return false;
+
+        }      
 
 		let eStarting =  document.querySelector("#startingGame");
 
@@ -194,19 +207,19 @@
 
         fnCountdown();
         fnSuffle();
-
     }
 
     function fnCountdown() {
+		
+        nCount = setTimeout(function() { fnCountdown() }, 1000);
 
-		nCount = setTimeout(function() { fnCountdown() }, 1000);
 
         if(nCountdown > 0) {
             eCountdown.innerText = nCountdown;
             nCountdown--;
         }
 
-        if (nCount == 3) {
+        if (nCount == 4) {
             eOptions.classList.add("hidden");
             eGame.classList.remove("hidden");
             clearTimeout(nCount);
@@ -264,9 +277,9 @@
             eDiv.classList.add("bg", "bg-" + i);
             eDiv.addEventListener('click', fnChooseBackgroudCards)
 
-            if (i == 1) {
+            /*if (i == 1) {
                 eDiv.classList.add("checked");
-            }
+            }*/
 
             eDiv.appendChild(eImg);
 
@@ -285,7 +298,13 @@
 	    let eAlert = document.querySelector("#alertMessage");
 
         eBtnSave.disabled = true;
-		nBack = eBack.getAttribute("data-value");
+		let nBack = eBack.getAttribute("data-value");
+
+
+
+        localStorage.setItem("background", nBack);
+
+
 		eAlert.classList.remove("hidden");
 
     }
@@ -297,7 +316,7 @@
         let eBtnSave = document.querySelector("#btnSave");
         let eAlert = document.querySelector("#alertMessage");
 
-		eChecked.classList.remove("checked");
+        if (eChecked != null) { eChecked.classList.remove("checked"); };        
 		this.classList.add("checked");
         eAlert.classList.add("hidden");
         eBtnSave.disabled = false;
