@@ -344,6 +344,7 @@
     function fnScores() {
 
         let oData = JSON.parse(localStorage.getItem("scores"));
+        //let oDataOrdered = fnOrderScores(oData);
         
         if (oData != null) {
 
@@ -356,7 +357,7 @@
                 let eTime = document.createElement("td");
                 let eDificuldae = document.createElement("td");
 
-                ePos.innerText = i + 1;
+                ePos.innerText = (i + 1) + 'º';
                 eName.innerText = oData[i][0];
                 eClicks.innerText = oData[i][1];
                 eTime.innerText = oData[i][2];
@@ -394,5 +395,24 @@
         aScores.push(aData);
 
         localStorage.setItem("scores", JSON.stringify(aScores));
+
+    }
+
+    function fnInfoScores() {
+
+            let title = 'PONTUAÇÕES';
+            let text = 'A definição da posição é verifica a partir do número de cliques realizados no jogo.<br/><br/>' +
+                       'Critérios de desempate:<br/>' +
+                       '1) Tempo decorrido;<br/>' +
+                       '2) Primeiro que pontuou.';
+
+            alertify.alert(title, text);
+            return;
+
+    }
+
+    function fnOrderScores(oData) {
+
+
 
     }
