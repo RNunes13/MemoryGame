@@ -6,6 +6,8 @@
 	var aCards = new Array();
 	var nPairs = 12;
     var sDifficult = "";
+    var sUser = "";
+    var aScores = new Array();
 
 	for(let i=1; i <= nPairs ; i++){
     	aCards.push(i+"-a");
@@ -29,11 +31,13 @@
     var eOptions = document.querySelector("#options");
     var eHome = document.querySelector("#home");
     var eTimeElapsed = document.querySelector("#elapsedTime");
+    var eScoreTable = document.querySelector("#scoreTable");
     var nSeconds = 0;
     var nMinutes = 0;
     var nHours = 0;
 
     fnBackgroundCards();
+    fnScores();
 
     eHome.addEventListener("click", function () {
          location.reload();
@@ -154,8 +158,9 @@
                         eRedo.classList.remove("hidden");
                         eTitle.innerText = "Parabéns !";
                         eDescription.innerText = "Você encontrou todos os pares.";
+                        fnSaveScores();
                         clearTimeout(nElapsedTime);
-                        fnPlay('assets/audio/aplausos.mp3');
+                        fnPlay('assets/audio/aplausos.mp3');                        
                     }
 
                      bDisabled = false;
@@ -207,6 +212,7 @@
         }
 
 		let eStarting =  document.querySelector("#startingGame");
+        sUser = document.querySelector("#userName").value;
 
         sDifficult = document.querySelector("#level").value;
 
@@ -244,11 +250,6 @@
 
         nSeconds++;
 
-		nHours = (nMinutes + 60) % 60;
-        nMinutes = Math.floor( nSeconds / 60);
-		nSeconds = (nSeconds + 60) % 60;
-
-		/*
         if (nSeconds == 60) {
 
             nSeconds = 0;
@@ -264,7 +265,6 @@
             }
 
         }
-        */
 
         nElapsedTime = setTimeout(function(){ fnElapsedTime() }, 1000);
 
@@ -338,5 +338,53 @@
 
         eAlertMessage.classList.add("hidden");
         document.querySelector('#configurations').style.display = 'none';
+        document.querySelector('#scores').style.display = 'none';
+
+    }
+
+    function fnScores() {
+
+        let oData = JSON.parse(localStorage.getItem("scores"));
+        
+        if (oData != null) { 
+
+            let tam = oData.length; 
+
+            for (var i = 0; i < tam; i++) {
+
+                var eTr = document.createElement("tr");
+                var eTdPos = document.createElement("td");
+                var eTdName = document.createElement("td");
+                var eTdHits = document.createElement("td");
+                var eTdTime = document.createElement("td");
+
+                eTdPos.innerText = i + 1;
+                eTdName.innerText = oData[i].name;
+                eTdHits.innerText = oData[i].hits;
+                eTdTime.innerText = oData[i].time;
+
+                eTr.appendChild(eTdPos);
+                eTr.appendChild(eTdName);
+                eTr.appendChild(eTdHits);
+                eTr.appendChild(eTdTime);
+            
+                eScoreTable.appendChild(eTr);
+
+            }
+
+        }
+
+    }
+
+    function fnSaveScores() {
+
+        let Clicks = eClicks.innerText;
+        let Time = eTimeElapsed.innerText;
+
+        let aData = {name: sUser, hits: Clicks, time: Time};
+        
+        if (aScores != null) { aScores.push(aData); } else { aScores = aData; }
+
+        localStorage.setItem("scores", JSON.stringify(aScores));
 
     }

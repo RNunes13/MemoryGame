@@ -61,15 +61,17 @@
                 </h4>
             </div>
 
-            <!-- <div class="overlay"></div> -->
-
             <!-- DIV QUE CONTÉM A TELA DE BEM-VINDO (PRIMEIRA TELA EXIBIDA) -->
             <div id="options" class="well-lg">
 
                 <div class="row">
 
                     <div class="">
+
                         <button id="btnConfig" type="button" class="btn pull-right" onclick="document.querySelector('#configurations').style.display = 'block';"><i class="glyphicon glyphicon-cog"></i> Configurações</button>
+
+                        <button id="btnScores" class="btn pull-right" onclick="document.querySelector('#scores').style.display = 'block';"><i class="glyphicon glyphicon-equalizer"></i> Pontuações</button>
+
                     </div>
 
                 </div>
@@ -128,7 +130,6 @@
                     <h4>O jogo será iniciado em</h4>
                     <span id="countdown"></span>
                 </div>
-
             </div>
 
             <!-- DIV QUE CONTÉM O MODAL DAS CONFIGURAÇÕES -->
@@ -174,10 +175,58 @@
                     </div>
 
                 </div>
+            </div>
 
+            <!-- DIV QUE CONTÉM O MODAL DAS PONTUAÇÕES -->
+            <div id="scores" class="modal-scores">
+
+                <div class="container  col-sm-8 col-sm-offset-2 modal-scores-content animate">
+
+                    <div class="row text-center">
+
+                        <div class="col-sm-12">
+                            <span onclick="fnCloseModal()" class="close-modal">&times;</span>
+                
+                            <h2>Pontuações</h2>
+                            <hr />
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            
+                            <table class="table table-striped">
+                                
+                                <thead>
+                                    <tr>
+                                        <th>Posição</th>
+                                        <th>Nome</th>
+                                        <th>Nº de Cliques</th>
+                                        <th>Tempo</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="scoreTable">
+                                    
+                                </tbody>
+
+                            </table>
+
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div id="backgroundCards" class="text-center"></div>
+                        </div>
+                    </div>
+
+                </div>
             </div>
 
         </div>
+
+        <button onclick="fnSaveScores()">TEST</button>
 
         <script src="assets/js/main.js" type="text/javascript"></script>
 
