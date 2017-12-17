@@ -5,7 +5,6 @@
     var nElapsedTime;
 	var aCards = new Array();
 	var nPairs = 12;
-    var sDifficult = "";
     var sUser = "";
     var aScores = new Array();
 
@@ -24,7 +23,7 @@
     var eRedo = document.querySelector("#redo");
     var eTitle = document.querySelector("#title");
     var eDescription = document.querySelector("#description");
-    var sLevel = document.querySelector("#level").value;
+    var sLevel = "teste";
     var eCountdown = document.querySelector("#countdown");
     var nCountdown = 3;
     var eGame = document.querySelector("#game");
@@ -94,7 +93,7 @@
 
             eDiv.classList.add("figura","bg-"+nBack);
             eDiv.setAttribute("data-value",parseInt(v));
-            eImg.src = "assets/img/animais/"+sDifficult+"/"+v+".png";
+            eImg.src = "assets/img/animais/"+sLevel+"/"+v+".png";
 
             eDiv.appendChild(eImg);
             eDiv.addEventListener("click",fnClick);
@@ -214,7 +213,7 @@
 		let eStarting =  document.querySelector("#startingGame");
         sUser = document.querySelector("#userName").value;
 
-        sDifficult = document.querySelector("#level").value;
+        sLevel = document.querySelector("#level").value;
 
         eStarting.classList.remove("hidden");
 
@@ -346,29 +345,30 @@
 
         let oData = JSON.parse(localStorage.getItem("scores"));
         
-        if (oData != null) { 
+        if (oData != null) {
 
-            let tam = oData.length; 
+            for (var i = 0; i < oData.length; i++) {
 
-            for (var i = 0; i < tam; i++) {
+                let eTR = document.createElement("tr");
+                let ePos = document.createElement("td");
+                let eName = document.createElement("td");
+                let eClicks = document.createElement("td");
+                let eTime = document.createElement("td");
+                let eDificuldae = document.createElement("td");
 
-                var eTr = document.createElement("tr");
-                var eTdPos = document.createElement("td");
-                var eTdName = document.createElement("td");
-                var eTdHits = document.createElement("td");
-                var eTdTime = document.createElement("td");
+                ePos.innerText = i + 1;
+                eName.innerText = oData[i][0];
+                eClicks.innerText = oData[i][1];
+                eTime.innerText = oData[i][2];
+                eDificuldae.innerText = oData[i][3];
 
-                eTdPos.innerText = i + 1;
-                eTdName.innerText = oData[i].name;
-                eTdHits.innerText = oData[i].hits;
-                eTdTime.innerText = oData[i].time;
+                eTR.appendChild(ePos);
+                eTR.appendChild(eName);
+                eTR.appendChild(eClicks);
+                eTR.appendChild(eTime);
+                eTR.appendChild(eDificuldae);
 
-                eTr.appendChild(eTdPos);
-                eTr.appendChild(eTdName);
-                eTr.appendChild(eTdHits);
-                eTr.appendChild(eTdTime);
-            
-                eScoreTable.appendChild(eTr);
+                eScoreTable.appendChild(eTR);
 
             }
 
@@ -378,12 +378,20 @@
 
     function fnSaveScores() {
 
+        // COLOCAR A PRIMEIRA LETRA DA STRING DE DIFICULDADE EM MAIUSCULO
+        let sDifficult = sLevel.substring(0, 1); // ARMAZENA A PRIMEIRA LETRA
+        sDifficult = sDifficult.toUpperCase(); // COLOCA EM MAIUSCULA
+        sDifficult += sLevel.substring(1); // E CONCATENA A LETRA MAIUSCULA COM A STRING NOVAMENTE
+
+
         let Clicks = eClicks.innerText;
         let Time = eTimeElapsed.innerText;
+        let aData = [sUser, Clicks, Time, sDifficult];
+        let dataStorage = JSON.parse(localStorage.getItem("scores"));
 
-        let aData = {name: sUser, hits: Clicks, time: Time};
+        if (dataStorage != null) { aScores = dataStorage; }
         
-        if (aScores != null) { aScores.push(aData); } else { aScores = aData; }
+        aScores.push(aData);
 
         localStorage.setItem("scores", JSON.stringify(aScores));
 
