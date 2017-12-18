@@ -155,9 +155,9 @@
 
                     if (nHits == nTotal) {
                         eRedo.classList.remove("hidden");
+                        fnSaveScores();
                         eTitle.innerText = "Parabéns !";
                         eDescription.innerText = "Você encontrou todos os pares.";
-                        fnSaveScores();
                         clearTimeout(nElapsedTime);
                         fnPlay('assets/audio/aplausos.mp3');                        
                     }
@@ -344,9 +344,10 @@
     function fnScores() {
 
         let oData = JSON.parse(localStorage.getItem("scores"));
-        //let oDataOrdered = fnOrderScores(oData);
         
         if (oData != null) {
+        
+            oData.sort();
 
             for (var i = 0; i < oData.length; i++) {
 
@@ -358,10 +359,10 @@
                 let eDificuldae = document.createElement("td");
 
                 ePos.innerText = (i + 1) + 'º';
-                eName.innerText = oData[i][0];
-                eClicks.innerText = oData[i][1];
-                eTime.innerText = oData[i][2];
-                eDificuldae.innerText = oData[i][3];
+                eName.innerText = oData[i][3];
+                eClicks.innerText = oData[i][0];
+                eTime.innerText = oData[i][1];
+                eDificuldae.innerText = oData[i][4];
 
                 eTR.appendChild(ePos);
                 eTR.appendChild(eName);
@@ -372,6 +373,17 @@
                 eScoreTable.appendChild(eTR);
 
             }
+
+        } else {
+
+            let eTR = document.createElement("tr");
+            let eTD = document.createElement("td");
+
+            eTD.innerText = "Não há pontuações no momento. Começe a jogar agora!"
+            eTD.setAttribute("colspan", 5);
+            eTR.appendChild(eTD);
+            eTR.classList.add("text-center");
+            eScoreTable.appendChild(eTR);
 
         }
 
@@ -384,13 +396,23 @@
         sDifficult = sDifficult.toUpperCase(); // COLOCA EM MAIUSCULA
         sDifficult += sLevel.substring(1); // E CONCATENA A LETRA MAIUSCULA COM A STRING NOVAMENTE
 
+        let dataStorage = JSON.parse(localStorage.getItem("scores"));
 
         let Clicks = eClicks.innerText;
         let Time = eTimeElapsed.innerText;
-        let aData = [sUser, Clicks, Time, sDifficult];
-        let dataStorage = JSON.parse(localStorage.getItem("scores"));
+        let dataLength;
 
-        if (dataStorage != null) { aScores = dataStorage; }
+        if (dataStorage != null) {
+
+            dataLength = dataStorage.length + 1;
+            aScores = dataStorage;
+
+        } else {
+
+            dataLength = 1;
+        }
+
+        let aData = [Clicks, Time, dataLength, sUser, sDifficult];
         
         aScores.push(aData);
 
@@ -408,11 +430,5 @@
 
             alertify.alert(title, text);
             return;
-
-    }
-
-    function fnOrderScores(oData) {
-
-
 
     }
