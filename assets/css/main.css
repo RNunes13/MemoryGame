@@ -63,8 +63,6 @@ button{
     border-radius: 10px;
 }
 
-.modal-scores-content { margin-top: 5%; height: 80%; overflow-y: scroll; }
-
 .close-modal {
     float: right;
     color: #000;
@@ -89,6 +87,24 @@ button{
 #btnScores {
     margin-right: 10px; 
 }
+
+/*********************** PAGINAÇÃO - PONTUAÇÕES *****************/
+.pg-normal, .pg-selected,.pg-ctrl {
+    font-family: : Arial;
+    color: #626262;
+    margin: 0 3px 0 3px;
+    cursor: pointer;
+}
+
+.pg-ctrl, .pg-normal {
+    font-size: 11px;
+}
+
+.pg-selected {
+    font-weight: bold;
+    color: #000;
+}
+/***************************************************************/
 
 
 /* backgrounds */

@@ -33,7 +33,8 @@
     var eScoreTable = document.querySelector("#scoreTable");
     var nSeconds = 0;
     var nMinutes = 0;
-    var nHours = 0;
+    var nHours = 0;    
+    var ePageNav = document.querySelector("#pageNav");
 
     fnBackgroundCards();
     fnScores();
@@ -372,6 +373,8 @@
 
                 eScoreTable.appendChild(eTR);
 
+                ePageNav.classList.remove("hidden");
+
             }
 
         } else {
@@ -384,6 +387,8 @@
             eTR.appendChild(eTD);
             eTR.classList.add("text-center");
             eScoreTable.appendChild(eTR);
+
+            //ePageNav.classList.add("hidden");
 
         }
 
