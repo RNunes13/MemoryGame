@@ -1,7 +1,6 @@
 
     var eView = document.querySelector("#view");
     var eDivBackCards = document.querySelector("#backgroundCards");
-    var nCount;
     var nElapsedTime;
 	var aCards = new Array();
 	var nPairs = 12;
@@ -181,9 +180,11 @@
 
     function fnDisableButton(){
 
-        let userName = document.querySelector("#userName").text;
+        let userName = document.querySelector("#userName").value;
         let level = document.querySelector("#level").value;
-        let startGame = document.getElementById('startGame');
+        let startGame = document.querySelector('#startGame');
+
+        userName = userName.replace(/^\s+/,""); // REMOVE OS ESPAÇO DA ESQUERDA DA STRING, SE HOUVER
 
         if (userName == "" || level == "") {
             startGame.disabled = true;
@@ -224,19 +225,17 @@
 
     function fnCountdown() {
 
-        nCount = setTimeout(function() { fnCountdown() }, 1000);
-        
         if(nCountdown > 0) {
             eCountdown.innerText = nCountdown;
             nCountdown--;
-        }
-        
-        if (nCount == 4) {
+        } else {
             eOptions.classList.add("hidden");
             eGame.classList.remove("hidden");
-            clearTimeout(nCount);
             fnElapsedTime();
+            return;
         }
+
+        setTimeout(function() { fnCountdown() }, 1000);
 
     }
 
