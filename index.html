@@ -59,9 +59,9 @@
 
                 <!-- LABELS PARA EXIBIÇÃO DOS CLIQUES DADOS E A PONTUAÇÃO -->
                 <h4>
-                    <strong>Cliques:</strong> <span id="clicks">0</span> | 
-                    <strong>Acertos:</strong> <span id="hits">0</span>/12 | 
-                    <strong>Tempo decorrido:</strong> <span id="elapsedTime">00:00:00</span>
+                    <strong><i class="glyphicon glyphicon-hand-up"></i> Cliques:</strong> <span id="clicks">0</span> &nbsp;
+                    <strong><i class="glyphicon glyphicon-check"></i> Acertos:</strong> <span id="hits">0</span>/12 &nbsp;
+                    <strong><i class="glyphicon glyphicon-time"></i> Tempo decorrido:</strong> <span id="elapsedTime">00:00:00</span>
                 </h4>
             </div>
 
@@ -74,7 +74,7 @@
 
                         <button id="btnConfig" type="button" class="btn pull-right" onclick="document.querySelector('#configurations').style.display = 'block';"><i class="glyphicon glyphicon-cog"></i> Configurações</button>
 
-                        <button id="btnScores" class="btn pull-right" onclick="document.querySelector('#scores').style.display = 'block';"><i class="glyphicon glyphicon-equalizer"></i> Pontuações</button>
+                        <button id="btnScores" class="btn pull-right" onclick="document.querySelector('#scores').style.display = 'block';"><i class="glyphicon glyphicon-stats"></i> Pontuações</button>
 
                     </div>
 
@@ -86,7 +86,7 @@
                         <h1>
                             <span>Bem-vindo ao Jogo da Memória</span>
                         </h1>
-                        <p class="h4">Escolha o nivel de dificuldade abaixo antes de iniciar o jogo.</p>
+                        <p class="h4">Digite seu nome e escolha o nivel de dificuldade abaixo antes de iniciar o jogo.</p>
                     </div>
 
                 </div>            
@@ -130,7 +130,6 @@
                 <br />
 
                 <div id="startingGame" class="row hidden" style="text-align: center;">
-
                     <h4>O jogo será iniciado em</h4>
                     <span id="countdown"></span>
                 </div>
@@ -139,14 +138,14 @@
             <!-- DIV QUE CONTÉM O MODAL DAS CONFIGURAÇÕES -->
             <div id="configurations" class="modal-config">
 
-                <div class="container col-sm-6 col-sm-offset-3 modal-config-content animate">
+                <div class="container col-sm-6 col-sm-offset-3 modal-config-content animate-top">
 
                     <div class="row text-center">
 
                         <div class="col-sm-12">
                             <span onclick="fnCloseModal()" class="close-modal">&times;</span>
                 
-                            <h2>Configurações</h2>
+                            <h2><i class="glyphicon glyphicon-cog"></i> Configurações</h2>
                             <hr />
                         </div>
 
@@ -184,14 +183,14 @@
             <!-- DIV QUE CONTÉM O MODAL DAS PONTUAÇÕES -->
             <div id="scores" class="modal-scores">
 
-                <div class="container  col-sm-8 col-sm-offset-2 modal-scores-content animate">
+                <div class="container  col-sm-8 col-sm-offset-2 modal-scores-content animate-top">
 
                     <div class="row text-center">
 
                         <div class="col-sm-12">
                             <span onclick="fnCloseModal()" class="close-modal">&times;</span>
                 
-                            <h2>Pontuações</h2>
+                            <h2><i class="glyphicon glyphicon-stats"></i> Pontuações</h2>
                             <button id="infoScores" class="btn btn-lg btn-link pull-right" title="Informações sobre as pontuações" onclick="fnInfoScores()"><i class="glyphicon glyphicon-info-sign"></i> Info</button>
                             <br />
                         </div>

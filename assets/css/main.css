@@ -9,10 +9,9 @@ and open the template in the editor.
 */
 
 
-@keyframes animatezoom {
-    from {transform: scale(0)} 
-    to {transform: scale(1)}
-}
+@keyframes animatezoom { from{transform: scale(0)} to {transform: scale(1)} }
+
+@keyframes animatetop { from{top:-300px; opacity:0} to {top:0; opacity:1} }
 
 
 button{
@@ -75,9 +74,27 @@ button{
     cursor: pointer;
 }
 
-.animate {
+.animate-zoom {
     -webkit-animation: animatezoom 0.8s;
     animation: animatezoom 0.8s
+}
+
+.animate-top {
+    position: relative;
+    -webkit-animation: animatetop 0.4s;
+    animation: animatetop 0.4s;
+}
+
+.fadeout {
+    opacity: 0;
+    -webkit-transition: opacity 1s;
+    transition: opacity 1s;
+}
+
+.fadein {
+    opacity: 1;
+    -webkit-transition: opacity 2s;
+    transition: opacity 2s;
 }
 
 #btnSave {
@@ -160,7 +177,7 @@ button{
 }
 
 #countdown{
-  font-size: 150px;
+  font-size: 130px;
 }
 
 

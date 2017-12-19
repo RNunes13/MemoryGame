@@ -143,6 +143,8 @@
 					} else {
 						eThis.classList.remove("bg-success");
 						eTemp.classList.remove("bg-success");
+                        eThis.classList.add("fadeout");
+                        eTemp.classList.add("fadeout");
 						fnPlay('assets/audio/soltar.mp3');
 					}
 
@@ -154,6 +156,16 @@
                     let nTotal = aCards.length;
 
                     if (nHits == nTotal) {
+
+                        let aFadeout = document.getElementsByClassName('fadeout');
+                        let nFadeout = document.getElementsByClassName('fadeout').length;
+
+                        for (var a = 0; a < nFadeout/2; a++){
+                            console.log(a);
+                            aFadeout[a].classList.remove("fadeout");
+                            aFadeout[a].classList.add("fadein");
+                        }
+
                         eRedo.classList.remove("hidden");
                         fnSaveScores();
                         eTitle.innerText = "Parabéns !";
