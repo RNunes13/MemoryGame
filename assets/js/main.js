@@ -22,7 +22,7 @@
     var eRedo = document.querySelector("#redo");
     var eTitle = document.querySelector("#title");
     var eDescription = document.querySelector("#description");
-    var sLevel = "teste";
+    var sLevel;
     var eCountdown = document.querySelector("#countdown");
     var nCountdown = 3;
     var eGame = document.querySelector("#game");
@@ -224,7 +224,20 @@
             return;
         }
 
-		let eStarting =  document.querySelector("#startingGame");
+        let userName = document.querySelector("#userName"); //CAMPO ONDE O USUARIO INFORMA O NOME
+        let level = document.querySelector("#level"); //SELECT PARA ESCOLHA DO NIVEL
+        let startGame = document.querySelector('#startGame'); //BOTAO DE INICIAR O JOGO
+        let btnConfig = document.querySelector('#btnConfig'); //BOTAO DE INICIAR O JOGO
+        let btnScores = document.querySelector('#btnScores'); //BOTAO DE INICIAR O JOGO
+		let eStarting =  document.querySelector("#startingGame"); //COUNTDOWN
+
+        //DESATIVANDO OS CAMPOS E BOTÕES DA TELA INICIAL, PARA PREVINIR INTERVEÇÕES DURANTE o COUNTDOWN
+        userName.disabled = true;
+        level.disabled = true;
+        startGame.disabled = true;
+        btnConfig.disabled = true;
+        btnScores.disabled = true;
+
         sUser = document.querySelector("#userName").value;
 
         sLevel = document.querySelector("#level").value;
