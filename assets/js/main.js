@@ -33,18 +33,34 @@
     var nSeconds = 0;
     var nMinutes = 0;
     var nHours = 0;    
-    var ePageNav = document.querySelector("#pageNav");
+    var ePageNav = document.querySelector("#pageNav");    
+    var eStartGame = document.querySelector('#startGame');
+    var eBtnConfig = document.querySelector('#btnConfig');
+    var eBtnScores = document.querySelector('#btnScores');    
+    var eBtnSave = document.querySelector("#btnSave");
 
+    fnAddEvents();
     fnBackgroundCards();
     fnScores();
 
-    eHome.addEventListener("click", function () {
-         location.reload();
-    });
+    function fnAddEvents() {
 
-    eRedo.addEventListener("click", function () {
-         fnCheckView();
-    });
+        eHome.addEventListener("click", function () { location.reload(); });
+        eRedo.addEventListener("click", fnCheckView);
+
+        document.querySelector("#btnConfig").addEventListener("click", function() { document.querySelector('#configurations').style.display = 'block'; })
+
+        document.querySelector("#btnScores").addEventListener("click", function() { document.querySelector('#scores').style.display = 'block'; })
+
+        document.querySelector("#userName").addEventListener("keyup", fnDisableButton);
+        document.querySelector("#level").addEventListener("change", fnDisableButton);
+        eStartGame.addEventListener("click", fnStartGame);
+        document.querySelector("#closeModalConfig").addEventListener("click", fnCloseModal);
+        eBtnSave.addEventListener("click", fnSaveBackground);
+        document.querySelector("#closeModalScores").addEventListener("click", fnCloseModal);
+        document.querySelector("#infoScores").addEventListener("click", fnInfoScores);
+
+    }
 
 	function fnPlay(src){
 		audio.pause();
@@ -161,7 +177,6 @@
                         let nFadeout = document.getElementsByClassName('fadeout').length;
 
                         for (var a = 0; a < nFadeout/2; a++){
-                            console.log(a);
                             aFadeout[a].classList.remove("fadeout");
                             aFadeout[a].classList.add("fadein");
                         }
@@ -194,19 +209,18 @@
 
         let userName = document.querySelector("#userName").value;
         let level = document.querySelector("#level").value;
-        let startGame = document.querySelector('#startGame');
 
         userName = userName.replace(/^\s+/,""); // REMOVE OS ESPAÇO DA ESQUERDA DA STRING, SE HOUVER
 
         if (userName == "" || level == "") {
-            startGame.disabled = true;
-            startGame.classList.remove('btn-success');
-            startGame.classList.add('btn-danger');
+            eStartGame.disabled = true;
+            eStartGame.classList.remove('btn-success');
+            eStartGame.classList.add('btn-danger');
         }
         else {
-            startGame.disabled = false;
-            startGame.classList.remove('btn-danger');
-            startGame.classList.add('btn-success');
+            eStartGame.disabled = false;
+            eStartGame.classList.remove('btn-danger');
+            eStartGame.classList.add('btn-success');
         }
 
     }
@@ -226,17 +240,14 @@
 
         let userName = document.querySelector("#userName"); //CAMPO ONDE O USUARIO INFORMA O NOME
         let level = document.querySelector("#level"); //SELECT PARA ESCOLHA DO NIVEL
-        let startGame = document.querySelector('#startGame'); //BOTAO DE INICIAR O JOGO
-        let btnConfig = document.querySelector('#btnConfig'); //BOTAO DE INICIAR O JOGO
-        let btnScores = document.querySelector('#btnScores'); //BOTAO DE INICIAR O JOGO
 		let eStarting =  document.querySelector("#startingGame"); //COUNTDOWN
 
         //DESATIVANDO OS CAMPOS E BOTÕES DA TELA INICIAL, PARA PREVINIR INTERVEÇÕES DURANTE o COUNTDOWN
         userName.disabled = true;
         level.disabled = true;
-        startGame.disabled = true;
-        btnConfig.disabled = true;
-        btnScores.disabled = true;
+        eStartGame.disabled = true;
+        eBtnConfig.disabled = true;
+        eBtnScores.disabled = true;
 
         sUser = document.querySelector("#userName").value;
 
@@ -327,7 +338,6 @@
         let eAlertMessage = document.querySelector("#alertMessage");
         let eChecked = document.querySelector(".checked");
 		let eBack = document.querySelector(".checked");
-	    let eBtnSave = document.querySelector("#btnSave");
 	    let eAlert = document.querySelector("#alertMessage");
 
         eBtnSave.disabled = true;
@@ -461,3 +471,5 @@
             return;
 
     }
+
+
