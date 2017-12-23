@@ -18,6 +18,13 @@
         <link rel="stylesheet" href="assets/plugins/alertify/css/alertify.min.css" />
         <link rel="stylesheet" href="assets/plugins/alertify/css/themes/default.min.css" />
 
+        <!-- NOTIFIT -->
+        <script type="text/javascript" src="assets/plugins/notifIt/js/notifIt.js"></script>
+        <link rel="stylesheet" type="text/css" href="assets/plugins/notifIt/css/notifIt.css" />
+
+        <!-- JQUERY -->
+        <script type="text/javascript" src="assets/plugins/jquery/jquery-3.2.1.min.js"></script>
+
 
     </head>
     <body>
@@ -25,10 +32,10 @@
         <div class="container">
 
             <!-- DIV QUE CONTÉM O JOGO DA MEMÓRIA -->
-            <div id="game" class="well-lg hidden">
+            <div id="game" class="col-sm-12 hidden">
 
                 <div class="row">
-                    <div class="col-sm-11">
+                    <div class="col-sm-12">
                         <h1>
                             <span id="title">Jogo da Memória</span>
                         </h1>
@@ -60,7 +67,7 @@
                 <!-- LABELS PARA EXIBIÇÃO DOS CLIQUES DADOS E A PONTUAÇÃO -->
                 <h4>
                     <strong><i class="glyphicon glyphicon-hand-up"></i> Cliques:</strong> <span id="clicks">0</span> &nbsp;
-                    <strong><i class="glyphicon glyphicon-check"></i> Acertos:</strong> <span id="hits">0</span>/12 &nbsp;
+                    <strong><i class="glyphicon glyphicon-check"></i> Acertos:</strong> <span id="hits"></span>&nbsp;
                     <strong><i class="glyphicon glyphicon-time"></i> Tempo decorrido:</strong> <span id="elapsedTime">00:00:00</span>
                 </h4>
             </div>
@@ -70,11 +77,11 @@
 
                 <div class="row">
 
-                    <div class="">
+                    <div class="pull-right">
 
-                        <button id="btnConfig" type="button" class="btn pull-right"><i class="glyphicon glyphicon-cog"></i> Configurações</button>
+                        <button id="btnConfig" type="button" class="btn "><i class="glyphicon glyphicon-cog"></i> Configurações</button>
 
-                        <button id="btnScores" class="btn pull-right"><i class="glyphicon glyphicon-stats"></i> Pontuações</button>
+                        <button id="btnScores" class="btn"><i class="glyphicon glyphicon-stats"></i> Pontuações</button>
 
                     </div>
 
@@ -82,7 +89,7 @@
 
                 <div class="row">
 
-                    <div class="col-sm-11">
+                    <div class="col-sm-12">
                         <h1>
                             <span>Bem-vindo ao Jogo da Memória</span>
                         </h1>
@@ -151,23 +158,47 @@
 
                     </div>
 
-                    <div class="row text-center">
-                        <div id="alertMessage" class="col-sm-12 hidden">
-                            <div class="alert alert-success">
-                                <strong>Sucesso!</strong> O fundo das cartas foi alterado...
-                            </div>
-                        </div>
-                    </div>
-
                     <div class="row">
                         <div class="col-sm-12">
-                            <h3>Fundo das cartas</h3>
+                            <h3>Fundo das cartas <span class="obrigatorio">*</span></h3>
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="col-sm-12">
                             <div id="backgroundCards" class="text-center"></div>
+                        </div>
+                    </div>
+                                        
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h3>Desenho das cartas <span class="obrigatorio">*</span></h3>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div id="drawingCards" class="text-center"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h3>Quantidade de cartas</h3>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <label class="input-group-addon"><i class="glyphicon glyphicon-equalizer"></i></label>
+                                    <select id="numCards" class="form-control">
+                                        <option value="24">24 cartas / 12 pares</option>
+                                        <option value="30">30 cartas / 15 pares</option>
+                                    </select>
+                                </div>  
+                            </div>
                         </div>
                     </div>
 

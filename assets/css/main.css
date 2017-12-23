@@ -18,17 +18,24 @@ button{
     outline: none !important;
 }
 
+#view div {
+    background-size: cover;    
+}
+
 .figura{
     position: relative;
-    width: 128px;
-    height: 128px;
+    width: 100px;
+    height: 100px;
     background-color: white;
     margin: 4px;
     border: solid 1px silver;
     border-radius: 5px;
     display: inline-block;
     overflow: hidden;
-    cursor: pointer;
+}
+
+.figura img {
+    height: 100%;
 }
 
 .figura.ok{
@@ -53,6 +60,8 @@ button{
     height: 100%;
     background-color: rgb(0,0,0);
     background-color: rgba(0,0,0,0.4);
+    overflow-y: scroll;
+    padding-bottom: 1%;
 }
 
 .modal-config-content, .modal-scores-content {
@@ -123,57 +132,80 @@ button{
 }
 /***************************************************************/
 
+.obrigatorio {
+    color: red;
+}
 
 /* backgrounds */
-.bg {
-    width: 100px;
-    height: 100px;
+.bg, .drawing {
+    width: 80px;
+    height: 80px;
     border-radius: 5px;
     display: inline-block;
     overflow: hidden;
     cursor: pointer;
     margin: 5px;
+    border: 1px solid silver;
 }
 
-.bg:not(.checked) img{
+.bg:not(.bgChecked) img{
    visibility: hidden;
+}
+
+.drawing:not(.drawingChecked) img{
+   visibility: hidden;
+}
+
+/* AJUSTAR O TAMANHO DAS IMAGENS NAS CONFIGURAÇÕES DIV SEM A NECESSIDADE DE DIMINUI-LAS*/
+#backgroundCards div{
+    background-size: cover;
+}
+
+#backgroundCards div img {
+    height: 100%;
+}
+
+#drawingCards div{
+    background-size: cover;
+}
+
+#drawingCards div img {
+    height: 100%;
 }
 
 .bg-1:not(.ok) {
     background: url('../img/fundos/1.png');
-    background-size: cover;
 }
 .bg-2:not(.ok) {
     background: url('../img/fundos/2.png');
-    background-size: cover;
 }
 .bg-3:not(.ok) {
     background: url('../img/fundos/3.png');
-    background-size: cover;
 }
 .bg-4:not(.ok) {
     background: url('../img/fundos/4.png');
-    background-size: cover;
 }
 .bg-5:not(.ok) {
     background: url('../img/fundos/5.png');
-    background-size: cover;
 }
 .bg-6:not(.ok) {
     background: url('../img/fundos/6.png');
-    background-size: cover;
 }
 .bg-7:not(.ok) {
     background: url('../img/fundos/7.png');
-    background-size: cover;
 }
 .bg-8:not(.ok) {
     background: url('../img/fundos/8.png');
-    background-size: cover;
 }
 .bg-9:not(.ok) {
     background: url('../img/fundos/9.png');
-    background-size: cover;
+}
+
+.drawing-1:not(.ok) {
+    background: url('../img/tipos/1.png');
+}
+.drawing-2:not(.ok) {
+    background: url('../img/tipos/2.png');
 }
 
 #countdown{
@@ -183,8 +215,9 @@ button{
 
 @media (max-width: 362px) { 
 
-    .modal-config {
-        overflow-y: scroll;
+    .figura{
+        width: 80px;
+        height: 80px;
     }
-
+    
 }
