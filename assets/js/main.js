@@ -366,6 +366,9 @@ function fnConfigCards() {
         case '30':
             eNumCards.selectedIndex = 1;
             break;
+        case '40':
+            eNumCards.selectedIndex = 2;
+            break;
         default:
             eNumCards.selectedIndex = 0;
             break;
