@@ -95,18 +95,20 @@ function fnCheckView() {
 
 //FUNÇÃO PARA EMBARALHAR AS CARTAS
 function fnSuffle() {    
-    
+   
     if (localStorage.getItem("numCards") != null) {
         nPairs = localStorage.getItem("numCards") / 2;
     } else {
         nPairs = 12; //NUMERO DE PARES PADRÃO
     }
+    
+    aCards = [];
 
     for (let i=1; i <= nPairs ; i++){
         aCards.push(i+"-a");
         aCards.push(i+"-b");
     }
-
+    
     let nBack = localStorage.getItem("background");
     let sDraw = localStorage.getItem("drawing");
     
@@ -462,18 +464,21 @@ function fnScores() {
             let eClicks = document.createElement("td");
             let eTime = document.createElement("td");
             let eDificuldae = document.createElement("td");
+            let eCards = document.createElement("td");
 
             ePos.innerText = (i + 1) + 'º';
             eName.innerText = oData[i][3];
             eClicks.innerText = oData[i][0];
             eTime.innerText = oData[i][1];
             eDificuldae.innerText = oData[i][4];
+            eCards.innerText = oData[i][5];
 
             eTR.appendChild(ePos);
             eTR.appendChild(eName);
             eTR.appendChild(eClicks);
             eTR.appendChild(eTime);
             eTR.appendChild(eDificuldae);
+            eTR.appendChild(eCards);
 
             eScoreTable.appendChild(eTR);
 
@@ -487,7 +492,7 @@ function fnScores() {
         let eTD = document.createElement("td");
 
         eTD.innerText = "Não há pontuações no momento. Começe a jogar agora!"
-        eTD.setAttribute("colspan", 5);
+        eTD.setAttribute("colspan", 6);
         eTR.appendChild(eTD);
         eTR.classList.add("text-center");
         eScoreTable.appendChild(eTR);
@@ -507,6 +512,7 @@ function fnSaveScores() {
 
     let Clicks = eClicks.innerText;
     let Time = eTimeElapsed.innerText;
+    let Cards = localStorage.getItem("numCards");
     let dataLength;
 
     if (dataStorage != null) {
@@ -518,7 +524,7 @@ function fnSaveScores() {
         dataLength = 1;
     }
 
-    let aData = [Clicks, Time, dataLength, sUser, sDifficult];
+    let aData = [Clicks, Time, dataLength, sUser, sDifficult, Cards];
         
     aScores.push(aData);
 
