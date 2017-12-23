@@ -316,6 +316,19 @@ function fnElapsedTime() {
 
 //FUNÇÃO PARA ADICIONAR AS CARTAS DE FUNDO E TIPOS NAS CONFIGURAÇÕES
 function fnConfigCards() {
+    
+    let backgroundSaved = localStorage.getItem('background');
+    let drawingSaved = localStorage.getItem('drawing');
+    let nDrawingSaved;
+    
+    switch (drawingSaved) {
+        case 'animais':
+            nDrawingSaved = 1;
+            break;
+        case 'carros':
+            nDrawingSaved = 2;
+            break;
+    }
 
     for (var i = 1; i <= 9; i++) {
 
@@ -327,7 +340,7 @@ function fnConfigCards() {
         eDiv.setAttribute("data-config", "background");
         eDiv.classList.add("bg", "bg-" + i);
 
-        if (i == localStorage.getItem('background')) { eDiv.classList.add("bgChecked") }
+        if (i == backgroundSaved) { eDiv.classList.add("bgChecked") }
 
         eDiv.addEventListener('click', fnChooseConfigCards);
         eDiv.appendChild(eImg);
@@ -335,7 +348,7 @@ function fnConfigCards() {
 
     }
     
-    for (var i = 1; i <= 1; i++) {
+    for (var i = 1; i <= 2; i++) {
         
         let eImg = document.createElement("img");
 		eImg.src = "assets/img/checked.png";
@@ -346,12 +359,15 @@ function fnConfigCards() {
             case 1:
                 eDiv.setAttribute("data-value", "animais");
                 break;
+            case 2:
+                eDiv.setAttribute("data-value", "carros");
+                break;
         }
 
         eDiv.setAttribute("data-config", "drawing");
         eDiv.classList.add("drawing", "drawing-" + i);
 
-        if (localStorage.getItem('drawing') == "animais") { eDiv.classList.add("drawingChecked") }
+        if (i == nDrawingSaved) { eDiv.classList.add("drawingChecked") }
 
         eDiv.addEventListener('click', fnChooseConfigCards);
         eDiv.appendChild(eImg);
