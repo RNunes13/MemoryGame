@@ -246,7 +246,7 @@ function fnStartGame(){
         let title = 'OPSS...';
         let text = 'Parece que é a primeira vez que você executa este jogo, ou os dados foram limpos.<br/><br/>' +
                    'Portanto, será necessário realizar algumas configurações antes de iniciar.<br/><br/>' +
-                   'Para ter acesso as configurações deste jogo, basta clicar no botão <strong>Configurções</strong>.';
+                   'Para ter acesso as configurações deste jogo, basta clicar no botão <strong>Configurações</strong>.';
 
         alertify.alert(title, text);
         return;
