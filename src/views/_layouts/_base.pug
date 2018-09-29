@@ -7,10 +7,13 @@ doctype
 html(lang='pt-BR')
   head
     +metaTags()
+    title Jogo da Memória
     link(rel='shortcut icon' href='assets/img/favicon.ico' type='image/x-icon')
 
     //- Styles
     block styles
+      link(href='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.7.1/slick.css' rel='stylesheet')
+      link(href='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.7.1/slick-theme.css' rel='stylesheet')
       link(href='assets/css/vendor/fontawesome/css/all.min.css' rel='stylesheet' media='all')
       link(href='assets/css/memory_game-general.css' rel='stylesheet' media='all')
       link(href='assets/css/common/memory_game-common-globals.css' rel='stylesheet' media='all')
@@ -31,5 +34,7 @@ html(lang='pt-BR')
     //- Scripts
     block scripts
       script(src='assets/js/vendor/jquery.min.js')
+      script(src='https://code.jquery.com/jquery-migrate-1.2.1.min.js')
+      script(src='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.7.1/slick.js')
       script(src='assets/js/common/memory_game-common-globals.js')
       script(src='assets/js/memory_game-general.js')

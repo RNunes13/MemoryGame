@@ -4,7 +4,21 @@ export default {
     scores: $('.js--btn-scores'),
   },
   modal: {
-    config: $('.js--modal-config'),
+    config: {
+      self: $('.js--modal-config'),
+      btn: {
+        save: $('.js--modal-btn-save'),
+      },
+    },
     scores: $('.js--modal-scores'),
+  },
+  cards: {
+    background: {
+      self: $('.js--card-background'),
+      images: $('.js--card-background-image'),
+    },
+    draw: {
+      images: $('.js--card-draw-image'),
+    },
   },
 };

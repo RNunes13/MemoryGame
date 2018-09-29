@@ -4,21 +4,22 @@
     "ecmaVersion": 6,
     "sourceType": "module",
     "ecmaFeatures": {
-      "impliedStrict": true,
-    },
+      "impliedStrict": true
+    }
   },
   "env": {
     "browser": true,
     "commonjs": true,
     "embertest": true,
     "es6": true,
-    "node": true,
+    "node": true
   },
   "extends": "google",
   "rules": {
     "max-len": "off",
     "require-jsdoc": "off",
     "valid-jsdoc": "off",
-    "linebreak-style": [0, "error", "windows"],
+    "no-invalid-this": "off",
+    "linebreak-style": [0, "error", "windows"]
   }
 }
