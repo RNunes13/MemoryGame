@@ -1,0 +1,36 @@
+@import './__config-base';
+
+// Settings
+@import './settings/_fonts';
+
+body.has--no-scroll {
+  overflow: hidden;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+header,
+footer,
+main {
+  font-family: $font-main;
+}
+
+hr {
+  margin: 30px 0;
+  border: 0;
+  border-top: 1px solid #eee;
+}
+
+.mg-container {
+  display: block;
+  margin: 0 auto;
+  width: 80%;
+
+  @include mq('sm', max) {
+    width: 90%;
+  }
+}

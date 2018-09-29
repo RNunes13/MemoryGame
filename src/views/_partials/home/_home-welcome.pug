@@ -1,0 +1,38 @@
+section(class='mg-home__welcome')
+  div(class='mg-home__welcome--buttons')
+    button(class='mg-home__welcome--buttons-config js--btn-config' type='button')
+      i(class='fa fa-cog')
+      | Configurações
+    button(class='mg-home__welcome--buttons-scores js--btn-scores' type='button')
+      i(class='fa fa-star')
+      | Pontuações
+  
+  div(class='mg-home__welcome--message')
+    h1 Bem-vindo ao Jogo da Memória
+    p Digite seu nome e escolha o nivel de dificuldade abaixo antes de iniciar o jogo.
+
+  hr
+
+  div(class='mg-home__welcome--form')
+    form(class='form js--form')
+      div(class='form-group')
+        label(for='inputName') Nome
+        div(class='input-group')
+          div(class='input-group-addon') 
+            i(class='fa fa-user')
+          input(type='text' class='form-control' id='inputName' name='name' placeholder='Digite seu nome' required)
+
+      div(class='form-group')
+        label(for='inputDifficulty') Dificuldade
+        div(class='input-group-select')
+          div(class='input-group-addon') 
+            i(class='fa fa-list')
+          select(class='form-control' id='inputDifficulty' name='difficulty' required)
+            option(value='' selected disabled) -- 
+            option(value='facil') Fácil
+            option(value='medio') Médio
+            option(value='dificil') Difícil
+      
+      button(class='btn js--btn-start' type='submit')
+        i(class='fa fa-play')
+        | Iniciar

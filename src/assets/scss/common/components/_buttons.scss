@@ -1,0 +1,69 @@
+// Buttons
+%btn {
+  outline: none;
+  box-shadow: none;
+  background-color: transparent;
+  border: none;
+  font-size: 16px;
+  font-weight: 400;
+  padding: 10px 15px;
+  border-radius: 5px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease-in;
+
+  i {
+    margin-right: 10px;
+  }
+
+  &--default,
+  &--default-outline,
+  &--success,
+  &--success-outline {
+    @extend %btn;
+  }
+
+  &--default {
+    background-color: $color-btn-default;
+    border: 1px solid $color-btn-default;
+    color: #fff;
+
+    &:hover {
+      background-color: $color-btn-default-hover;
+      border: 1px solid $color-btn-default-hover;
+    }
+  }
+
+  &--default-outline {
+    background-color: transparent;
+    border: 1px solid $color-btn-default;
+    color: $color-btn-default;
+
+    &:hover {
+      background-color: $color-btn-default;
+      color: #fff;
+    }
+  }
+
+  &--success {
+    background-color: $color-btn-success;
+    border: 1px solid $color-btn-success;
+    color: #fff;
+
+    &:hover {
+      background-color: $color-btn-success-hover;
+      border: 1px solid $color-btn-success-hover;
+    }
+  }
+
+  &--success-outline {
+    background-color: transparent;
+    border: 1px solid $color-btn-success;
+    color: $color-btn-success;
+
+    &:hover {
+      background-color: $color-btn-success;
+      color: #fff;
+    }
+  }
+}

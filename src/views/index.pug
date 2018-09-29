@@ -1,0 +1,20 @@
+extends ./_layouts/_base.pug
+
+//- Template variables
+block vars
+  - var $templateName = 'home'
+  - var $templateClass = 'home'
+
+//- Page styles
+block append styles
+  link(href=`assets/css/memory_game-${$templateName}.css`, media='all' rel='stylesheet')/
+
+//- Main Content
+block content
+  div(class=`mg-${$templateClass}__container mg-container`)
+    include ./_partials/home/_home-countdown.pug
+    include ./_partials/home/_home-welcome.pug
+
+//- Page scripts
+block append scripts
+  script(src=`assets/js/memory_game-${$templateName}.js`)

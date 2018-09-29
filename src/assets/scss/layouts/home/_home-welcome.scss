@@ -1,0 +1,91 @@
+.mg-home__welcome {
+  &--buttons {
+    display: flex;
+    justify-content: flex-end;
+
+    @include mq('sm', max) {
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    button {
+      @extend %btn--default;
+
+      @include mq('sm', max) {
+        width: 100%;
+        margin-bottom: 10px;
+      }
+
+      i {
+        transition: 0.5s ease-in-out;
+      }
+    }
+
+    &-config {
+      &:hover {
+        i {
+          transform: rotate(360deg);
+        }
+      }
+    }
+
+    &-scores {
+      @include mq('sm') {
+        margin-left: 10px
+      }
+
+      &:hover {
+        i {
+          transform: rotateY(180deg);
+        }
+      }
+    }
+  }
+
+  &--message {
+    margin-top: 30px;
+    
+    h1, p {
+      margin: 0;
+    }
+
+    h1 {
+      margin-bottom: 10px;
+      font-size: 30px;
+    }
+  }
+
+  &--form {
+    .form-group {
+      @extend %form--group;
+      width: 450px;
+
+      @include mq('sm', max) {
+        width: 100%;
+      }
+    }
+    .input-group {
+      @extend %form--input-group;
+    }
+    .input-group-select {
+      @extend %form--input-group-select;
+    }
+    .form-control {
+      @extend %form--control;
+    }
+
+    .btn {
+      @extend %btn--success;
+
+      &:hover {
+        i {
+          transform: scale(1.3);
+        }
+      }
+
+      i {
+        transition: all 0.5s ease-in-out;
+      }
+    }
+  }
+}
