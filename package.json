@@ -1,0 +1,53 @@
+{
+  "name": "memory-game",
+  "version": "2.0.0",
+  "description": "Jogo da memória",
+  "main": "index.js",
+  "scripts": {
+    "clean": "rm -Rf ./dist",
+    "start": "npm run clean && gulp --colors && gulp watch --colors"
+  },
+  "keywords": [
+    "memory game",
+    "jogo da memoria"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/RNunes13/MemoryGame"
+  },
+  "author": {
+    "name": "Rodrigo Nunes",
+    "email": "nunesrodrigo13@outlook.com"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.1.0",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/preset-react": "^7.0.0",
+    "autoprefixer": "^9.1.5",
+    "babelify": "^10.0.0",
+    "eslint": "^4.19.1",
+    "eslint-config-google": "^0.9.1",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^6.0.0",
+    "gulp-babel": "^8.0.0",
+    "gulp-browserify": "^0.5.1",
+    "gulp-clean": "^0.4.0",
+    "gulp-cssmin": "^0.2.0",
+    "gulp-image": "^4.3.0",
+    "gulp-postcss": "^8.0.0",
+    "gulp-pug": "^4.0.1",
+    "gulp-sass": "^4.0.1",
+    "gulp-uglify": "^3.0.1",
+    "run-sequence": "^2.2.1"
+  },
+  "dependencies": {
+    "babel-eslint": "^9.0.0",
+    "jquery": "^3.3.1",
+    "npm": "^5.8.0",
+    "popper.js": "^1.14.4"
+  },
+  "engines": {
+    "node": ">= 6.0.0"
+  }
+}
