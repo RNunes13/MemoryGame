@@ -1,0 +1,17 @@
+//- Variables
+block vars
+
+section(class=`mg-modal mg-modal-${$modalClass} js--modal-${$modalClass}`)
+  div(class='mg-modal__container')
+    div(class='mg-modal__header')
+      block header
+        h1(class='mg-modal__header-title') #{$modalName}
+
+    div(class='mg-modal__body')
+      block body
+
+    div(class='mg-modal__footer')
+      block footer
+        button(class='mg-modal__footer-btn-close js--modal-btn-close')
+          i(class='fa fa-times')
+          | Fechar

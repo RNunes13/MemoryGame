@@ -1,0 +1,34 @@
+extends ./../../_layouts/_modal-base.pug
+
+//- Template variables
+block vars
+  - var $modalClass = 'config'
+  - var $modalName = 'Configurações'
+
+block body
+  p(class='mg-modal__body--info') Escolha as opções abaixo como desejar e clique em salvar.
+  h3(class='mg-modal__body--title') Fundo
+  div(class='card-background-container js--card-background')
+
+
+  h3(class='mg-modal__body--title') Desenho
+  div(class='card-draw-container js--card-draw')
+
+  h3(class='mg-modal__body--title') Quantidade
+  div(class='card-quantity-container js--card-quantity')
+    div(class='form-group')
+      label(for='inputQuantity' class='sr-only') Quantidade
+      div(class='input-group-select')
+        div(class='input-group-addon') 
+          i(class='fa fa-th-large')
+        select(class='form-control' id='inputQuantity' name='quantity' required)
+          option(value='' selected disabled) -- 
+          option(value='24') 24 cartas / 12 pares
+          option(value='30') 30 cartas / 15 pares
+          option(value='40') 40 cartas / 20 pares
+
+
+block prepend footer
+  button(class='mg-modal__footer-btn-save js--modal-btn-save')
+          i(class='fa fa-save')
+          | Salvar

@@ -19,7 +19,9 @@
   &--default,
   &--default-outline,
   &--success,
-  &--success-outline {
+  &--success-outline,
+  &--danger,
+  &--danger-outline {
     @extend %btn;
   }
 
@@ -63,6 +65,28 @@
 
     &:hover {
       background-color: $color-btn-success;
+      color: #fff;
+    }
+  }
+
+  &--danger {
+    background-color: $color-btn-danger;
+    border: 1px solid $color-btn-danger;
+    color: #fff;
+
+    &:hover {
+      background-color: $color-btn-danger-hover;
+      border: 1px solid $color-btn-danger-hover;
+    }
+  }
+
+  &--danger-outline {
+    background-color: transparent;
+    border: 1px solid $color-btn-danger;
+    color: $color-btn-danger;
+
+    &:hover {
+      background-color: $color-btn-danger;
       color: #fff;
     }
   }

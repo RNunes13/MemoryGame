@@ -1,0 +1,36 @@
+.mg-modal-config {
+  .mg-modal {
+
+    &__body {
+      &--info {
+        text-align: center;
+      }
+
+      &--title {
+        margin-bottom: 5px;
+      }
+
+      .card {
+        &-quantity-container {
+          .form-group {
+            @extend %form--group;
+
+            .input-group-select {
+              @extend %form--input-group-select;
+            }
+
+            .form-control {
+              @extend %form--control;
+            }
+          }
+        }
+      }
+    }
+
+    &__footer {
+      &-btn-save {
+        @extend %btn--success-outline;
+      }
+    }
+  }
+}

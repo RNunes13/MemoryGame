@@ -37,11 +37,6 @@ const task = {
       .pipe(gulp.dest(`${assetsDIST}/css`));
   },
 
-  jsVendor: function() {
-    return gulp.src(['node_modules/jquery/dist/jquery.min.js'])
-      .pipe(gulp.dest(`${assetsDIST}/js/vendor`));
-  },
-
   js: function() {
     return gulp.src([`${assetsSRC}/js/**/*.js`, `!${assetsSRC}/js/common/**/*.js`, `!${assetsSRC}/js/modules/**/*.js`])
       .pipe(browserify({transform: ['babelify']}))
@@ -61,12 +56,31 @@ const task = {
       .pipe(imagemin())
       .pipe(gulp.dest(`${assetsDIST}/img`));
   },
+
+  vendor: {
+    css: function() {
+      return gulp.src(['node_modules/@fortawesome/fontawesome-free/css/all.min.css'])
+      .pipe(gulp.dest(`${assetsDIST}/css/vendor/fontawesome/css`));
+    },
+
+    webfonts: function() {
+      return gulp.src(['node_modules/@fortawesome/fontawesome-free/webfonts/*.*'])
+      .pipe(gulp.dest(`${assetsDIST}/css/vendor/fontawesome/webfonts`));
+    },
+
+    js: function() {
+      return gulp.src(['node_modules/jquery/dist/jquery.min.js'])
+      .pipe(gulp.dest(`${assetsDIST}/js/vendor`));
+    },
+  },
 };
 
 gulp.task('clean', task.clean);
 gulp.task('pug', task.pug);
 gulp.task('sass', task.sass);
-gulp.task('jsVendor', task.jsVendor);
+gulp.task('cssVendor', task.vendor.css);
+gulp.task('jsVendor', task.vendor.js);
+gulp.task('webfontsVendor', task.vendor.webfonts);
 gulp.task('js', task.js);
 gulp.task('jsGlobal', task.jsGlobal);
 gulp.task('img', task.img);
@@ -91,5 +105,5 @@ gulp.task('watch', function() {
 });
 
 gulp.task('default', function(callback) {
-  runSequence('clean', ['pug', 'sass', 'js', 'jsGlobal', 'jsVendor', 'img'], callback);
+  runSequence('clean', ['pug', 'sass', 'js', 'jsGlobal', 'cssVendor', 'webfontsVendor', 'jsVendor', 'img'], callback);
 });
