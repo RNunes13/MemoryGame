@@ -74,6 +74,21 @@
             &-arrow::before {
               color: #000;
             }
+            &-prev,
+            &-next {
+              top: 45%;
+              &::before {
+                font-family: 'Font Awesome\ 5 Free';
+                font-weight: 600;
+                font-size: 30px;
+              }
+            }
+            &-prev::before {
+                content: '\f104';
+            }
+            &-next::before {
+                content: '\f105';
+            }
           }
         }
 

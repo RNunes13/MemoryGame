@@ -9,6 +9,9 @@ export default {
       btn: {
         save: $('.js--modal-btn-save'),
       },
+      quantity: {
+        select: $('.js--card-quantity select'),
+      },
     },
     scores: $('.js--modal-scores'),
   },

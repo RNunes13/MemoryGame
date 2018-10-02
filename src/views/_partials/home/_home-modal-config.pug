@@ -12,15 +12,15 @@ block body
   h3(class='mg-modal__body--title') Fundo
   div(class='card-background-container js--card-background')
     each card in cards
-      figure(class='js--card-background-image')
-        img(class='card-background-image' data-value=card.value alt=card.name src=card.src)
+      figure(class='js--card-background-image' data-value=card.value)
+        img(class='card-background-image' alt=card.name src=card.src)
       
 
   h3(class='mg-modal__body--title') Desenho
   div(class='card-draw-container js--card-draw')
     each drawing in drawings
-      figure(class='js--card-draw-image')
-        img(class='card-draw-image' data-value=drawing.value alt=drawing.name src=drawing.src)
+      figure(class='js--card-draw-image' data-value=drawing.value)
+        img(class='card-draw-image' alt=drawing.name src=drawing.src)
 
   h3(class='mg-modal__body--title') Quantidade
   div(class='card-quantity-container js--card-quantity')
