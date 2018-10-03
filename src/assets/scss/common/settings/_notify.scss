@@ -1,0 +1,113 @@
+@keyframes closing {
+  0% { transform: scaleY(1); opacity: 1; }
+  100% { transform: scaleY(0); opacity: 0; }
+}
+
+@keyframes opening {
+  0% { transform: scaleY(0); opacity: 0; }
+  100% { transform: scaleY(1); opacity: 1; }
+}
+
+.notify {
+  position: fixed;
+  display: flex;
+  top: 10px;
+  left: 50%;
+  width: 400px;
+  min-height: 65px;
+  margin-left: -200px;
+  border-radius: 5px;
+  box-shadow: 0px 6px 35px -6px #000;
+  box-sizing: border-box;
+  z-index: 9999;
+  font-family: $font-main;
+
+  @media only screen and (max-width: 490px) {
+    margin-left: 0px;
+    left: 2.5%;
+    width: 95%;
+  }
+
+  &.alert-info { background-color: #67a4c0; border: 1px solid #5191ad; }
+  &.alert-success { background-color: #3db56e; border: 1px solid #31a05e; }
+  &.alert-error { background-color: #c64444; border: 1px solid #a90d0e; }
+  &.alert-warning { background-color: #ebbc42; border: 1px solid #d3a529; }
+
+  &.closing {
+    transform-origin: top;
+    animation: closing 0.5s forwards;
+  }
+
+  &.opening {
+    transform-origin: top;
+    animation: opening 0.5s forwards;
+  }
+
+  .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    border-radius: 5px 0 0 5px;
+
+    &::before {
+      content: '';
+      width: 30px;
+      height: 30px;
+      display: inline-block;
+    }
+
+    &-info {
+      background-color: #5191ad;
+      &::before {
+        background: url('../../img/notify/info.png') no-repeat;
+        background-size: cover;
+      }
+    }
+    &-success {
+      background-color: #31a05e;
+      &::before {
+        background: url('../../img/notify/success.png') no-repeat;
+        background-size: cover;
+      }
+    }
+    &-error {
+      background-color: #a90d0e;
+      &::before {
+        background: url('../../img/notify/error.png') no-repeat;
+        background-size: cover;
+        width: 20px;
+        height: 20px;
+      }
+    }
+    &-warning {
+      background-color: #d3a529;
+      &::before {
+        background: url('../../img/notify/warning.png') no-repeat;
+        background-size: cover;
+      }
+    }
+    
+  }
+
+  .message {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 15px 20px;
+    color: #fff;
+
+    .close {
+      position: absolute;
+      top: -2px;
+      right: 6px;
+      cursor: pointer;
+
+      &::before {
+        content: 'x';
+        font-weight: 600;
+        font-size: 20px;
+      }
+    }
+  }
+}

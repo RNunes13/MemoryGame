@@ -1,5 +1,6 @@
 export default {
   btn: {
+    start: $('.js--btn-start'),
     config: $('.js--btn-config'),
     scores: $('.js--btn-scores'),
   },
