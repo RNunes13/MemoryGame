@@ -12,6 +12,14 @@ html,
 body {
   margin: 0;
   padding: 0;
+  opacity: 1;
+  visibility: visible;
+  transition: all 1s ease-out;
+
+  &.is--opacity {
+    opacity: 0;
+    visibility: hidden;
+  }
 }
 
 header,

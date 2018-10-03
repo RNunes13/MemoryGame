@@ -57,7 +57,7 @@ const Methods = {
       });
     },
     config() {
-      let data = Services.local_storage.get('settings');
+      let data = Services.storage.get('settings');
 
       if (!data) {
         $('.js--card-background-image.is--selected').removeClass('is--selected');
@@ -80,24 +80,24 @@ const Methods = {
       const qtd = $('.js--card-quantity select').val();
 
       if (!bg) {
-        alert('Escolha uma imagem de fundo para as cartas');
+        Services.notify.alert('info', 'Escolha uma imagem de fundo para as cartas');
         return false;
       } else if (!draw) {
-        alert('Escolha um desenho para as cartas');
+        Services.notify.alert('info', 'Escolha um desenho para as cartas');
         return false;
       } else if (!qtd) {
-        alert('Escolha a quantidade de cartas');
+        Services.notify.alert('info', 'Escolha a quantidade de cartas');
         return false;
       }
 
-      let saved = Services.local_storage.set('settings', {
+      let saved = Services.storage.set('settings', {
         background: bg,
         drawing: draw,
         quantity: qtd,
       });
 
-      if (saved) alert('Salvo com sucesso');
-      else alert('Não foi possível salvar as configurações, tente novamente em instantes ...');
+      if (saved) Services.notify.alert('success', 'Salvo com sucesso');
+      else Services.notify.alert('error', 'Não foi possível salvar as configurações, tente novamente em instantes ...');
     });
   },
 

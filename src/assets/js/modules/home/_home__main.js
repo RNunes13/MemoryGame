@@ -1,5 +1,4 @@
 import CacheSelectors from './__cache-selectors';
-import Services from './../../common/utils/services';
 
 const El = CacheSelectors;
 const Methods = {
@@ -9,7 +8,6 @@ const Methods = {
   startGame() {
     El.btn.start.on('click', (ev) => {
       ev.preventDefault();
-      Services.notify.alert('info', 'Iniciando o jogo ...');
     });
   },
 };

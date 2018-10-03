@@ -2,6 +2,7 @@
 const Methods = {
   init() {
     Methods.setGlobals();
+    Methods.showDocument();
     // Methods.firebase();
   },
 
@@ -9,6 +10,10 @@ const Methods = {
     window.MemoryGame = window.MemoryGame || {};
     MemoryGame.pathname = window.location.pathname;
     MemoryGame.overlay = $('.mg-overlay');
+  },
+
+  showDocument() {
+    $('body').removeClass('is--opacity');
   },
 
   // firebase() {
