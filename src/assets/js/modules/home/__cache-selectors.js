@@ -1,6 +1,7 @@
 export default {
   btn: {
     start: $('.js--btn-start'),
+    openMobile: $('.js--btn-mobile-open'),
     config: $('.js--btn-config'),
     scores: $('.js--btn-scores'),
   },

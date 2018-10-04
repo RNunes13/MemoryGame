@@ -3,21 +3,77 @@
     display: flex;
     justify-content: flex-end;
 
-    @include mq('sm', max) {
-      justify-content: center;
+    @include mq('md', max) {
       flex-direction: column;
+      justify-content: flex-start;
+      position: fixed;
+      width: 75%;
+      top: 0;
+      right: 0;
+      padding: 20px;
+      background: #6c757d;
+      transform: translateX(100%);
+      transition: all 0.5s ease-out;
+      height: 100%;
+      z-index: 1;
+    }
+
+    &.is--active {
+      transform: translateX(0);
     }
 
     button {
       @extend %btn--default;
 
-      @include mq('sm', max) {
+      @include mq('md', max) {
         width: 100%;
         margin-bottom: 10px;
+
+        background-color: #fff;
+        border: none;
+        color: #6c757d;
+
+        &:hover {
+          background-color: rgba(#fff, 0.7);
+          border: none;
+        }
       }
 
       i {
         transition: 0.5s ease-in-out;
+      }
+    }
+
+    &-mobile-open {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &.is--rotate {
+        &::before {
+          transform: rotate(135deg);
+        }
+      }
+
+      @include mq('md', max) {
+        position: absolute;
+        top: 10px;
+        left: -35px;
+        width: 35px;
+        height: 35px;
+        background: #6c757d;
+        border-radius: 5px 0 0 5px;
+        
+        &::before {
+          content: '';
+          width: 10px;
+          height: 10px;
+          border-left: 2px solid #fff;
+          border-top: 2px solid #fff;
+          display: inline-block;
+          transform: rotate(-45deg);
+          transition: all 0.5s;
+        }
       }
     }
 
@@ -30,7 +86,7 @@
     }
 
     &-scores {
-      @include mq('sm') {
+      @include mq('md') {
         margin-left: 10px
       }
 
