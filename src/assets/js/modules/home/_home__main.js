@@ -31,7 +31,7 @@ const Methods = {
       let interval = setInterval(() => {
         if (time === 0) {
           clearInterval(interval);
-          Methods.initGame();
+          Methods.initGame(name, difficulty);
         } else {
           El.countdown.time.text(--time);
         }
@@ -44,10 +44,10 @@ const Methods = {
       El.welcome.btn.openMobile.parent().toggleClass('is--active');
     });
   },
-  initGame() {
+  initGame(userName, difficulty) {
     El.countdown.self.removeClass('is--active');
     El.welcome.self.addClass('is--hidden');
-    Game.init();
+    Game.init(userName, difficulty);
 
     setTimeout(() => El.game.self.removeClass('is--hidden'), 500);
   },

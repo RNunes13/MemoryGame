@@ -21,9 +21,9 @@ const Properties = {
 };
 
 const Methods = {
-  init() {
+  init(userName, difficult) {
     Methods.setActions();
-    Methods.setData();
+    Methods.setData(userName, difficult);
     Methods.shuffle();
     Methods.setInfo();
   },
@@ -33,8 +33,10 @@ const Methods = {
     El.game.btn.redo.on('click', () => Methods.redo());
   },
 
-  setData() {
+  setData(userName, difficult) {
     Properties.data = JSON.parse(Services.storage.get('settings'));
+    Properties.data.username = userName;
+    Properties.data.difficult = difficult;
 
     if (!Properties.data) {
       Properties.data = {
@@ -97,6 +99,7 @@ const Methods = {
     const background = Properties.data.background;
     const drawing = Properties.data.drawing;
     const pairs = Properties.data.quantity / 2;
+    const difficult = Properties.data.difficult;
     const cards = [];
 
     for (let i = 1; i <= pairs; i++) {
@@ -120,7 +123,7 @@ const Methods = {
       figureFront.className = 'card-front';
       figureBack.className = 'card-back';
       imageFont.src = `assets/img/background/${background}.png`;
-      imageBack.src = `assets/img/cards/${drawing}/easy/${a}.png`;
+      imageBack.src = `assets/img/cards/${drawing}/${difficult}/${a}.png`;
 
       card.addEventListener('click', function() {
         Methods.click(this);
