@@ -1,21 +1,55 @@
 import CacheSelectors from './__cache-selectors';
+import Services from './../../common/utils/services';
+import Game from './_home__game';
 
 const El = CacheSelectors;
 const Methods = {
   init() {
-    Methods.startGame();
+    Methods.verifyData();
     Methods.buttonMobileOpen();
   },
-  startGame() {
-    El.btn.start.on('click', (ev) => {
+  verifyData() {
+    El.welcome.form.start.on('click', (ev) => {
       ev.preventDefault();
+
+      const name = El.welcome.form.name.val().trim();
+      const difficulty = El.welcome.form.difficulty.val();
+
+      if (!name || !difficulty) {
+        Services.notify.alert({
+          type: 'warning',
+          text: 'Preencha todos os campos',
+        });
+        return false;
+      }
+
+      El.countdown.self.addClass('is--active');
+
+      let time = 3;
+      El.countdown.time.text(time);
+
+      let interval = setInterval(() => {
+        if (time === 0) {
+          clearInterval(interval);
+          Methods.initGame();
+        } else {
+          El.countdown.time.text(--time);
+        }
+      }, 1000);
     });
   },
   buttonMobileOpen() {
-    El.btn.openMobile.on('click', (ev) => {
-      El.btn.openMobile.toggleClass('is--rotate');
-      El.btn.openMobile.parent().toggleClass('is--active');
+    El.welcome.btn.openMobile.on('click', (ev) => {
+      El.welcome.btn.openMobile.toggleClass('is--rotate');
+      El.welcome.btn.openMobile.parent().toggleClass('is--active');
     });
+  },
+  initGame() {
+    El.countdown.self.removeClass('is--active');
+    El.welcome.self.addClass('is--hidden');
+    Game.init();
+
+    setTimeout(() => El.game.self.removeClass('is--hidden'), 500);
   },
 };
 

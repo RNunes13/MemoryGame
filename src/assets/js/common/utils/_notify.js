@@ -27,12 +27,12 @@ let _notify = {
 
 export default {
 
-  alert(type = required('type'), text = required('text'), delay = 5000) {
-    if (type !== 'success' && type !== 'error' && type !== 'warning' && type !== 'info') {
-      throw new Error('The type must be \'success\', \'error\', \'warning\' or \'info\'');
-    }
-
+  alert(options = required('options')) {
     if (document.body.querySelector('#notify')) _notify.close(true);
+
+    const type = options.type;
+    const text = options.text;
+    const delay = options.delay ? options.delay : 5000;
 
     const notify = document.createElement('div');
     const symbol = document.createElement('div');

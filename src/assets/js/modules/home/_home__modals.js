@@ -19,13 +19,13 @@ const Methods = {
       elem.addClass('is--active');
     },
     config() {
-      El.btn.config.on('click', (ev) => {
+      El.welcome.btn.config.on('click', (ev) => {
         Methods.load.config();
         Methods.open.click(El.modal.config.self);
       });
     },
     scores() {
-      El.btn.scores.on('click', (ev) => Methods.open.click(El.modal.scores) );
+      El.welcome.btn.scores.on('click', (ev) => Methods.open.click(El.modal.scores) );
     },
   },
 
@@ -36,13 +36,13 @@ const Methods = {
       selected.removeClass('is--selected');
     },
     background() {
-      El.cards.background.images.each(function(i) {
+      El.modal.config.cards.background.images.each(function(i) {
         const $this = $(this);
         $this.on('click', (ev) => Methods.select.click(ev, '.js--card-background-image.is--selected'));
       });
     },
     draw() {
-      El.cards.draw.images.each(function(i) {
+      El.modal.config.cards.draw.images.each(function(i) {
         const $this = $(this);
         $this.on('click', (ev) => Methods.select.click(ev, '.js--card-draw-image.is--selected'));
       });
@@ -67,8 +67,8 @@ const Methods = {
       }
 
       data = JSON.parse(data);
-      Methods.load.select(El.cards.background.images, data.background);
-      Methods.load.select(El.cards.draw.images, data.drawing);
+      Methods.load.select(El.modal.config.cards.background.images, data.background);
+      Methods.load.select(El.modal.config.cards.draw.images, data.drawing);
       El.modal.config.quantity.select.val(data.quantity);
     },
   },
@@ -79,14 +79,11 @@ const Methods = {
       const draw = $('.js--card-draw-image.is--selected').attr('data-value');
       const qtd = $('.js--card-quantity select').val();
 
-      if (!bg) {
-        Services.notify.alert('info', 'Escolha uma imagem de fundo para as cartas');
-        return false;
-      } else if (!draw) {
-        Services.notify.alert('info', 'Escolha um desenho para as cartas');
-        return false;
-      } else if (!qtd) {
-        Services.notify.alert('info', 'Escolha a quantidade de cartas');
+      if (!bg || !draw || !qtd) {
+        Services.notify.alert({
+          type: 'info',
+          text: 'Verifique se todas as opções foram escolhidas antes de salvar.',
+        });
         return false;
       }
 
@@ -96,13 +93,22 @@ const Methods = {
         quantity: qtd,
       });
 
-      if (saved) Services.notify.alert('success', 'Salvo com sucesso');
-      else Services.notify.alert('error', 'Não foi possível salvar as configurações, tente novamente em instantes ...');
+      if (saved) {
+        Services.notify.alert({
+          type: 'success',
+          text: 'Salvo com sucesso',
+        });
+      } else {
+        Services.notify.alert({
+          type: 'error',
+          text: 'Não foi possível salvar as configurações, tente novamente em instantes ...'
+        });
+      }
     });
   },
 
   slick() {
-    El.cards.background.self.slick({
+    El.modal.config.cards.background.self.slick({
       infinite: false,
       slidesToShow: 4,
       slidesToScroll: 4,

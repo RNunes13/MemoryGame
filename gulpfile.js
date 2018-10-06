@@ -53,7 +53,7 @@ const task = {
 
   img: function() {
     return gulp.src(`${assetsSRC}/img/**/*`)
-      .pipe(imagemin())
+      // .pipe(imagemin())
       .pipe(gulp.dest(`${assetsDIST}/img`));
   },
 

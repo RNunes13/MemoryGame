@@ -1,4 +1,4 @@
-section(class='mg-home__welcome is--hidden')
+section(class='mg-home__welcome js--welcome')
   div(class='mg-home__welcome--buttons')
     div(class='mg-home__welcome--buttons-mobile-open js--btn-mobile-open')
     button(class='mg-home__welcome--buttons-config js--btn-config' type='button')
@@ -21,18 +21,18 @@ section(class='mg-home__welcome is--hidden')
         div(class='input-group')
           div(class='input-group-addon') 
             i(class='fa fa-user')
-          input(type='text' class='form-control' id='inputName' name='name' placeholder='Digite seu nome' required)
+          input(type='text' class='form-control js--form-name' id='inputName' name='name' placeholder='Digite seu nome' required)
 
       div(class='form-group')
         label(for='inputDifficulty') Dificuldade
         div(class='input-group-select')
           div(class='input-group-addon') 
             i(class='fa fa-list')
-          select(class='form-control' id='inputDifficulty' name='difficulty' required)
+          select(class='form-control js--form-difficulty' id='inputDifficulty' name='difficulty' required)
             option(value='' selected disabled) -- 
-            option(value='facil') Fácil
-            option(value='medio') Médio
-            option(value='dificil') Difícil
+            option(value='easy') Fácil
+            option(value='medium') Médio
+            option(value='hard') Difícil
       
       button(class='btn js--btn-start' type='submit')
         i(class='fa fa-play')

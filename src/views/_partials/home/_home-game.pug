@@ -1,15 +1,15 @@
-section(class='mg-home__game')
+section(class='mg-home__game js--game is--hidden')
   div(class='mg-home__game--heading')
-    h1 Jogo da Memória
-    span Concentre-se e use a sua memória para encontrar todos os pares.
+    h1(class='mg-home__game--heading-title js--heading-title') Jogo da Memória
+    span(class='mg-home__game--heading-subtitle js--heading-subtitle') Concentre-se e use a sua memória para encontrar todos os pares.
   
   div(class='mg-home__game--buttons')
-    button(class='mg-home__game--buttons-homepage js--btn-homepage' type='button')
-      i(class='fa fa-home')
-      | Tela Inicial
     button(class='mg-home__game--buttons-redo js--btn-redo' type='button')
       i(class='fa fa-redo')
       | Refazer
+    button(class='mg-home__game--buttons-homepage js--btn-homepage' type='button')
+      i(class='fa fa-home')
+      | Tela Inicial
   div(class='mg-home__game--view')
     div(class='mg-home__game--view__container js--view')
 
