@@ -35,8 +35,8 @@ const Methods = {
 
   setData(userName, difficult) {
     Properties.data = JSON.parse(Services.storage.get('settings'));
-    Properties.data.username = userName;
-    Properties.data.difficult = difficult;
+    Properties.username = userName;
+    Properties.difficult = difficult;
 
     if (!Properties.data) {
       Properties.data = {
@@ -99,7 +99,7 @@ const Methods = {
     const background = Properties.data.background;
     const drawing = Properties.data.drawing;
     const pairs = Properties.data.quantity / 2;
-    const difficult = Properties.data.difficult;
+    const difficult = Properties.difficult;
     const cards = [];
 
     for (let i = 1; i <= pairs; i++) {
