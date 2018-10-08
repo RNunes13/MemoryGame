@@ -19,6 +19,11 @@
     visibility: visible;
   }
 
+  &__overflow {
+    overflow-y: scroll;
+    height: 95%;
+  }
+
   &__container {
     width: 600px;
     border-radius: 5px;

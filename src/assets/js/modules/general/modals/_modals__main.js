@@ -5,6 +5,7 @@ const El = CacheSelectors;
 const Methods = {
   init() {
     Methods.close();
+    Methods.verifyViewport();
   },
 
   close() {
@@ -13,6 +14,10 @@ const Methods = {
       $(modal).removeClass('is--active');
       $(MemoryGame.overlay).removeClass('is--active');
     });
+  },
+
+  verifyViewport() {
+    if (window.innerHeight < 700) El.self.children().addClass('mg-modal__overflow');
   },
 };
 
