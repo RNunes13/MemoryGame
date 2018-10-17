@@ -36,7 +36,15 @@ export default {
         select: $('.js--card-quantity select'),
       },
     },
-    scores: $('.js--modal-scores'),
+    scores: {
+      self: $('.js--modal-scores'),
+      test: $('.mg-modal__body--test'),
+      loading: $('.js--scores-loading'),
+      table: {
+        self: $('.js--scores-table'),
+        tbody: $('.js--scores-table-tbody'),
+      }
+    },
   },
   game: {
     self: $('.js--game'),
