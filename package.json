@@ -6,7 +6,7 @@
   "scripts": {
     "clean": "rm -Rf ./dist",
     "start": "npm run clean && gulp --colors && gulp watch --colors",
-    "build": "npm run clean && gulp --colors"
+    "build": "npm run clean && gulp --colors --env production"
   },
   "keywords": [
     "memory game",
@@ -25,7 +25,6 @@
     "@babel/core": "^7.1.0",
     "@babel/preset-env": "^7.1.0",
     "@babel/preset-react": "^7.0.0",
-    "@fortawesome/fontawesome-free": "^5.3.1",
     "autoprefixer": "^9.1.5",
     "babelify": "^10.0.0",
     "eslint": "^4.19.1",
@@ -37,17 +36,19 @@
     "gulp-clean": "^0.4.0",
     "gulp-concat": "^2.6.1",
     "gulp-cssmin": "^0.2.0",
+    "gulp-if": "^2.0.2",
     "gulp-image": "^4.3.0",
+    "gulp-notify": "^3.2.0",
     "gulp-postcss": "^8.0.0",
     "gulp-pug": "^4.0.1",
     "gulp-sass": "^4.0.1",
     "gulp-uglify": "^3.0.1",
+    "minimist": "^1.2.0",
     "run-sequence": "^2.2.1"
   },
   "dependencies": {
     "babel-eslint": "^9.0.0",
     "firebase": "^5.5.3",
-    "jquery": "^3.3.1",
     "npm": "^5.8.0",
     "popper.js": "^1.14.4"
   },
