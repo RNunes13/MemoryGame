@@ -4,6 +4,8 @@ A project designed to train and learn about the development of the Front End. Th
 
 This project is a new version of the memory game, which was previously developed with the same purpose described above. In this version, several changes have been made, ranging from the layout to the code structure, using current tools that are often used by Front End developers.
 
+The game is available at https://mg-memorygame.firebaseapp.com/ (Game under development)
+
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
