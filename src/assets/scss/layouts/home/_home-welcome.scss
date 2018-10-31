@@ -98,10 +98,8 @@
     }
   }
 
-  &--message {
-    @include rem(margin-top, 30px);
-    
-    h1, p {
+  &--message {    
+    p {
       margin: 0;
     }
 
