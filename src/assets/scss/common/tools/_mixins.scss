@@ -2,7 +2,6 @@
 
 //Media Queries
 //Mobile First
-
 @mixin mq($width, $type: min) {
   @if map_has_key($breakpoints, $width) {
     $width: map_get($breakpoints, $width);
@@ -14,5 +13,47 @@
 
   @media only screen and (#{$type}-width: $width) {
     @content;
+  }
+}
+
+// Font Weight
+@mixin font-weight($weight) {
+  $output: $weight;
+
+  @if map-has-key($weights, $weight) {
+    $output: map-get($weights, $weight);
+  }
+
+  font-weight: $output;
+}
+
+@mixin reset-link {
+  text-decoration: inherit;
+  color: inherit;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+@mixin reset-media {
+  max-width: 100%;
+  height: auto;
+  -ms-interpolation-mode: bicubic;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+@mixin reset-list {
+  padding-left: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  list-style: none;
+}
+
+@mixin headings($from: 1, $to: 6) {
+  @for $i from $from through $to {
+    h#{$i} {
+      @content;
+    }
   }
 }

@@ -51,6 +51,7 @@
       margin: 7px 0;
       font-size: 30px;
       text-align: center;
+      font-weight: 700;
 
       @include mq('sm', max) {
         font-size: 20px;

@@ -1,9 +1,15 @@
+// Vendor (Third party libs)
+@import './../../../../node_modules/sass-rem/_rem';
+
 // Settings
 @import './settings/_colors';
 @import './settings/_typography';
 
 // Tools
 @import './tools/_mixins';
+
+// Elements
+@import './elements/_root';
 
 // Components
 @import './components/_buttons';
