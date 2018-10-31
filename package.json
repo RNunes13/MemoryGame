@@ -44,7 +44,8 @@
     "gulp-sass": "^4.0.1",
     "gulp-uglify": "^3.0.1",
     "minimist": "^1.2.0",
-    "run-sequence": "^2.2.1"
+    "run-sequence": "^2.2.1",
+    "sass-rem": "^2.0.1"
   },
   "dependencies": {
     "babel-eslint": "^9.0.0",
