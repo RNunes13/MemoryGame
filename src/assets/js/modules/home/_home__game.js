@@ -143,8 +143,16 @@ const Methods = {
     const isOpen = $this.hasClass('ok');
 
     if (!Properties.isDisabled && !isOpen) {
+      let delayTimeout = 1000;
+
       $this.addClass('flip');
       Properties.isDisabled = true;
+
+      if (MemoryGame.isMobile && MemoryGame.html.width() <= 576) {
+        $this.addClass('rise');
+        delayTimeout = 1600;
+        setTimeout(() => $this.removeClass('rise'), 1000);
+      }
 
       Properties.info.clicks++;
       $homeGame.info.clicks.text(Properties.info.clicks);
@@ -182,7 +190,7 @@ const Methods = {
 
           Properties.isDisabled = false;
           Methods.verify(hits);
-        }, 1000);
+        }, delayTimeout);
       } else {
         Properties.card.temp = $this;
         $this.addClass('ok');

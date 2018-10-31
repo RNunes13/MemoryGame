@@ -24,6 +24,14 @@ const Methods = {
     window.MemoryGame = window.MemoryGame || {};
     MemoryGame.pathname = window.location.pathname;
     MemoryGame.overlay = $('.mg-overlay');
+
+    // Cache Elements
+    MemoryGame.html = $('html');
+    MemoryGame.body = $('body');
+    MemoryGame.main = $('.main');
+
+    //External Plugin
+    MemoryGame.isMobile = isMobile.any;
   },
 
   showDocument() {
