@@ -1,7 +1,6 @@
 
-import CacheSelectors from './__cache-selectors';
+import { $modal } from './../../../common/modules/Globals/_globals-selectors';
 
-const El = CacheSelectors;
 const Methods = {
   init() {
     Methods.close();
@@ -9,7 +8,7 @@ const Methods = {
   },
 
   close() {
-    El.close.on('click', (ev) => {
+    $modal.close.on('click', (ev) => {
       const modal = ev.currentTarget.offsetParent;
       $(modal).removeClass('is--active');
       $(MemoryGame.overlay).removeClass('is--active');
@@ -17,7 +16,7 @@ const Methods = {
   },
 
   verifyViewport() {
-    if (window.innerHeight < 700) El.self.children().addClass('mg-modal__overflow');
+    if (window.innerHeight < 700) $modal.self.children().addClass('mg-modal__overflow');
   },
 };
 

@@ -1,7 +1,6 @@
-import CacheSelectors from './__cache-selectors';
-import Services from './../../common/utils/services.js';
+import { $homeGame } from './../../common/modules/Globals/_globals-selectors.js';
+import { $storage } from './../../common/utils/services.js';
 
-const El = CacheSelectors;
 const Properties = {
   data: {},
   isDisabled: false,
@@ -29,12 +28,12 @@ const Methods = {
   },
 
   setActions() {
-    El.game.btn.homepage.on('click', () => location.reload() );
-    El.game.btn.redo.on('click', () => Methods.redo());
+    $homeGame.btn.homepage.on('click', () => location.reload() );
+    $homeGame.btn.redo.on('click', () => Methods.redo());
   },
 
   setData(userName, difficult) {
-    Properties.data = JSON.parse(Services.storage.get('settings'));
+    Properties.data = JSON.parse($storage.get('settings'));
     Properties.username = userName;
     Properties.difficult = difficult;
 
@@ -50,9 +49,9 @@ const Methods = {
   },
 
   setInfo() {
-    El.game.info.clicks.text('0');
-    El.game.info.hits.text(`0 / ${Properties.data.quantity / 2}`);
-    El.game.info.time.text('00:00:00');
+    $homeGame.info.clicks.text('0');
+    $homeGame.info.hits.text(`0 / ${Properties.data.quantity / 2}`);
+    $homeGame.info.time.text('00:00:00');
 
     Methods.time.init();
   },
@@ -68,7 +67,7 @@ const Methods = {
 
       const time = `${('00' + hour).slice(-2)}:${('00' + min).slice(-2)}:${('00' + sec).slice(-2)}`;
 
-      El.game.info.time.text(time);
+      $homeGame.info.time.text(time);
 
       Properties.info.time.seconds++;
 
@@ -89,8 +88,8 @@ const Methods = {
     Properties.info.time.hours = 0;
     Properties.info.time.minutes = 0;
     Properties.info.time.seconds = 0;
-    El.game.btn.redo.removeClass('is--active');
-    El.game.view.html('');
+    $homeGame.btn.redo.removeClass('is--active');
+    $homeGame.view.html('');
     Methods.setInfo();
     Methods.shuffle();
   },
@@ -134,7 +133,7 @@ const Methods = {
       cardContainer.appendChild(figureFront);
       cardContainer.appendChild(figureBack);
       card.appendChild(cardContainer);
-      El.game.view.append(card);
+      $homeGame.view.append(card);
     });
   },
 
@@ -148,7 +147,7 @@ const Methods = {
       Properties.isDisabled = true;
 
       Properties.info.clicks++;
-      El.game.info.clicks.text(Properties.info.clicks);
+      $homeGame.info.clicks.text(Properties.info.clicks);
 
       if ($temp.length) {
         $this.addClass('ok');
@@ -179,7 +178,7 @@ const Methods = {
           Properties.card.temp = '';
 
           const hits = $('.ok').length / 2;
-          El.game.info.hits.text(`${hits} / ${Properties.data.quantity / 2}`);
+          $homeGame.info.hits.text(`${hits} / ${Properties.data.quantity / 2}`);
 
           Properties.isDisabled = false;
           Methods.verify(hits);
@@ -202,9 +201,9 @@ const Methods = {
         $(this).removeClass('is--invisible');
       });
 
-      El.game.btn.redo.addClass('is--active');
-      El.game.heading.title.text('Parabéns !');
-      El.game.heading.subtitle.text('Você encontrou todos os pares.');
+      $homeGame.btn.redo.addClass('is--active');
+      $homeGame.heading.title.text('Parabéns !');
+      $homeGame.heading.subtitle.text('Você encontrou todos os pares.');
 
       clearInterval(Properties.info.time.interval);
     }

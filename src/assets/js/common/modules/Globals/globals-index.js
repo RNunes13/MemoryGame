@@ -1,5 +1,5 @@
 
-import GlobalsInit from './_globals__init.js';
+import GlobalsInit from './_globals-init';
 
 const init = () => {
   GlobalsInit.init();
