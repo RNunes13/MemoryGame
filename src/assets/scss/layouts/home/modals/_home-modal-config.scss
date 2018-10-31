@@ -7,8 +7,8 @@
       }
 
       &--title {
-        margin-bottom: 5px;
-        font-weight: 700;
+        @include rem(margin-bottom, 5px);
+        @include font-weight(bold);
       }
 
       .card {
@@ -29,25 +29,27 @@
         &-background-container,
         &-draw-container {
           figure {
-            width: 100px;
-            height: 100px;
-            margin: 10px;
+            @include rem(width, 100px);
+            @include rem(height, 100px);
+            @include rem(margin, 10px);
             outline: none;
             cursor: pointer;
 
             @include mq('sm', max) {
-              width: 80px;
-              height: 80px;
+              @include rem(width, 80px);
+              @include rem(height, 80px);
             }
 
             &.is--selected {
               position: relative;
 
               &::before {
+                @include rem(border-radius, 5px);
+                @include rem(font-size, 40px);
+                @include font-weight(semi-bold);
                 content: '\f00c';
                 position: absolute;
                 width: 100%;
-                border-radius: 5px;
                 height: 100%;
                 display: flex;
                 align-items: center;
@@ -55,21 +57,19 @@
                 background-color: rgba(#000, 0.5);
                 color: #fff;
                 font-family: 'Font Awesome\ 5 Free';
-                font-weight: 600;
-                font-size: 40px;
               }
             }
 
             img {
+              @include rem(border-radius, 5px);
               width: 100%;
               height: 100%;
-              border-radius: 5px;
             }
           }
         }
 
         &-background-container {
-          margin: 0 20px 30px;
+          @include rem(margin, 0 20px 30px);
 
           .slick {
             &-arrow::before {
@@ -79,9 +79,9 @@
             &-next {
               top: 45%;
               &::before {
+                @include rem(font-size, 30px);
+                @include font-weight(semi-bold);
                 font-family: 'Font Awesome\ 5 Free';
-                font-weight: 600;
-                font-size: 30px;
               }
             }
             &-prev::before {
@@ -98,8 +98,8 @@
           justify-content: center;
 
           figure {
+            @include rem(border-radius, 5px);
             border: 1px solid #999;
-            border-radius: 5px;
           }
         }
       }

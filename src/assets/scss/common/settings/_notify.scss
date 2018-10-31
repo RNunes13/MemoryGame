@@ -9,21 +9,21 @@
 }
 
 .notify {
+  @include rem(top, 10px);
+  @include rem(width, 400px);
+  @include rem(min-height, 65px);
+  @include rem(margin-left, -200px);
+  @include rem(border-radius, 5px);
   position: fixed;
   display: flex;
-  top: 10px;
   left: 50%;
-  width: 400px;
-  min-height: 65px;
-  margin-left: -200px;
-  border-radius: 5px;
   box-shadow: 0px 6px 35px -6px #000;
   box-sizing: border-box;
   z-index: 9999;
   font-family: $font-main;
 
   @media only screen and (max-width: 490px) {
-    margin-left: 0px;
+    margin-left: 0;
     left: 2.5%;
     width: 95%;
   }
@@ -44,16 +44,16 @@
   }
 
   .icon {
+    @include rem(width, 80px);
+    @include rem(border-radius, 5px 0 0 5px);
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 80px;
-    border-radius: 5px 0 0 5px;
 
     &::before {
+      @include rem(width, 30px);
+      @include rem(height, 30px);
       content: '';
-      width: 30px;
-      height: 30px;
       display: inline-block;
     }
 
@@ -74,10 +74,10 @@
     &-error {
       background-color: #a90d0e;
       &::before {
+        @include rem(width, 20px);
+        @include rem(height, 20px);
         background: url('../../img/notify/error.png') no-repeat;
         background-size: cover;
-        width: 20px;
-        height: 20px;
       }
     }
     &-warning {
@@ -91,22 +91,22 @@
   }
 
   .message {
+    @include rem(padding, 15px 20px);
     display: flex;
     align-items: center;
     width: 100%;
-    padding: 15px 20px;
     color: #fff;
 
     .close {
-      position: absolute;
-      top: -2px;
-      right: 6px;
+      @include rem(top, -2px);
+      @include rem(right, 6px);
       cursor: pointer;
+      position: absolute;
 
       &::before {
+        @include rem(font-size, 20px);
         content: 'x';
-        font-weight: 600;
-        font-size: 20px;
+        @include font-weight(semi-bold);
       }
     }
   }

@@ -1,19 +1,19 @@
 // Buttons
 %btn {
+  @include rem(font-size, 16px);
+  @include rem(padding, 10px 15px);
+  @include rem(border-radius, 5px);
+  @include rem(letter-spacing, 1px);
+  @include font-weight(regular);
+  cursor: pointer;
   outline: none;
   box-shadow: none;
   background-color: transparent;
   border: none;
-  font-size: 16px;
-  font-weight: 400;
-  padding: 10px 15px;
-  border-radius: 5px;
-  letter-spacing: 1px;
-  cursor: pointer;
   transition: all 0.3s ease-in;
 
   i {
-    margin-right: 10px;
+    @include rem(margin-right, 10px);
   }
 
   &--default,
